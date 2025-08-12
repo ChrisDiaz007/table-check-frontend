@@ -1,0 +1,38 @@
+.Desktop-Header{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 21px;
+}
+
+.Navbar-Container {
+  display: flex;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.FirstSection {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+}
+
+.UniverseTrigger {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px;
+  gap: 8px;
+}
+.UniverseTrigger:hover{
+  border-color: black;
+  background-color: lightgray;
+}
+
+.UserButton {
+  cursor: pointer;
+  gap: 8px;
+  font-size: 20px;
+  padding-left: 5px;
+}

@@ -1,0 +1,37 @@
+.Wrapper {
+  display: flex;
+  gap: 80px;
+  margin-top: 40px;
+}
+
+.Sidebar {
+  width: 280px;
+  height: 635px
+}
+
+.Content {
+  width: 600px;
+  height: 100vh;
+}
+
+.Login-Wrapper {
+  display: flex;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  padding: 16px;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  border: 1px solid lightblue;
+  border-radius: 50%;
+  border-width: 12px;
+  background-color: lightblue;
+}
+
+.Content h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}

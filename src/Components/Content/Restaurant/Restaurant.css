@@ -1,0 +1,92 @@
+.Content_res {
+  display: flex;
+  flex-direction: column;
+  padding-top: 28px;
+  gap: 40px;
+}
+
+.VenueContent_v1 {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 32px;
+}
+
+.AboutWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 680px;
+}
+
+.SideBarWrapper {
+  width: 1;
+}
+
+.OverviewSelection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.VenueDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.FontRestaurant {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.Details_d2 {
+  display: flex;
+  gap: 14px;
+}
+
+.map-link {
+  color: rgba(111, 18, 111, 0.743);
+  text-decoration: underline;
+}
+
+.Details-d3 {
+  display: flex;
+  gap: 6px;
+}
+
+.Price_Info {
+  display: flex;
+  gap: 3px;
+  font-size: 16px;
+}
+
+.Wrapper_wq {
+  display: flex;
+  gap: 10px;
+}
+
+.Box_w1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.Details-Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Details-About {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Details-Description {
+  font-size: 14px;
+}

@@ -1,0 +1,63 @@
+.swiper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Header_h1 {
+  font-size:20px;
+  font-weight: bold;
+}
+
+.swiper-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 375px;
+  gap: 14px;
+}
+
+.CardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Name_h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.About_p {
+  font-weight: lighter;
+}
+
+.About_p p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.PriceInfo {
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.Price_a {
+  font-weight: bold;
+}
+
+.Cuisine_box {
+  border: 1px solid #a9a9a9f3;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 3px 8px;
+}

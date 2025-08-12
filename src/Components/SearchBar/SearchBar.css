@@ -1,0 +1,21 @@
+.Hero-Banner {
+  /* background-image: url('/src/assets/Searchbar-img.png'); */
+  background-size: cover;
+  background-position: center;
+  height: 366px;
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 16px;
+
+}
+
+.Overlay {
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+  height: 100%;
+  justify-content: center;
+  padding-left: 48px;
+  color: white;
+  font-size: 36px;
+}
