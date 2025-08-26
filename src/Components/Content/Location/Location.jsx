@@ -1,33 +1,34 @@
-import './Location.css'
-import { useEffect, useState } from "react"
-import axios from 'axios';
-import { Link } from "react-router-dom"
+import "./Location.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Location = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/restaurants', {
-      headers: { "Content-Type": "application/json" },
-    })
-    .then (response => {
-      const flatRestaurants = response.data.data.map((item) => ({
-        id: Number(item.id),
-        ...item.attributes,
-      }));
+    axios
+      .get("http://localhost:3000/api/v1/restaurants", {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        const flatRestaurants = response.data.data.map((item) => ({
+          id: Number(item.id),
+          ...item.attributes,
+        }));
 
         // Filter only Tokyo prefecture
         const tokyoRestaurants = flatRestaurants.filter(
           (restaurant) => restaurant.prefecture === "Tokyo"
         );
 
-      setRestaurants(tokyoRestaurants)
-    })
-    .catch(error => console.error('Error fetching restaurants', error));
-  }, [])
+        setRestaurants(tokyoRestaurants);
+      })
+      .catch((error) => console.error("Error fetching restaurants", error));
+  }, []);
 
-    return (
-<div className="swiper">
+  return (
+    <div className="swiper">
       <div className="Header_h1">Available in Tokyo</div>
       <div className="swiper-wrapper">
         {restaurants.map((restaurant) => (
@@ -87,7 +88,7 @@ const Location = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Location
+export default Location;

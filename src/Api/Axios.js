@@ -48,7 +48,6 @@ api.interceptors.response.use(
   (res) => res,
   async (error) => {
     const original = error?.config;
-
     // If no response or not a 401, just reject.
     if (!error.response || error.response.status !== 401) {
       return Promise.reject(error);
@@ -59,8 +58,11 @@ api.interceptors.response.use(
       original?.url?.includes("/login") ||
       original?.url?.includes("/logout") ||
       original?.url?.includes("/api/v1/refresh_token");
-
     if (hitAuthEndpoint) {
+      return Promise.reject(error);
+    }
+
+    if (!TokenStore.getAccessToken()) {
       return Promise.reject(error);
     }
 
@@ -81,15 +83,14 @@ api.interceptors.response.use(
 
     try {
       // Ask Rails to rotate the refresh cookie and return a fresh access token
-      const resp = await apiBare.post("/api/v1/refresh_token");
+      const resp = await apiBare.post("/api/v1/refresh_token", null, {
+        validateStatus: (s) => s < 500,
+      });
       const newToken = resp?.data?.access_token;
-
       if (!newToken) throw new Error("Missing access token on refresh");
 
       TokenStore.setAccessToken(newToken);
-
-        console.log("Access token refreshed:", newToken);
-
+      console.log("Access token refreshed:", newToken);
       processQueue(null, newToken);
 
       // Retry the original request with the new token
