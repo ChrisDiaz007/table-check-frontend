@@ -1,12 +1,9 @@
-# React + Vite
+# Table Check Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Geocding
 
-Currently, two official plugins are available:
+In this project, Mapbox is integrated into the backend to automatically geocode restaurant addresses into precise latitude and longitude coordinates, ensuring that clean, consistent location data is always stored in the database. This removes the need for the frontend to handle geocoding and guarantees reliable results regardless of client device or network. On the frontend, Mapbox is used solely for rendering interactive maps and markers, providing users with a smooth and visually engaging way to explore restaurants by location.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- BackEnd Benefits = data quality, consistency, automation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- FrontEnd Benefits = visualization, user experience

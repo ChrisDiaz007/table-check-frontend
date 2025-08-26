@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import MapView from "./MapView";
 
 const Restaurant = () => {
   const { id } = useParams();
@@ -51,31 +52,36 @@ const Restaurant = () => {
       </div>
       <div className="VenueContent_v1">
         <div className="AboutWrapper">
-
           <section className="OverviewSelection">
             <div className="VenueDetails">
               <span className="FontRestaurant">{restaurant.name}</span>
-            <div className="Details_d1">
-              <span>{restaurant.cuisines}</span>
-            </div>
-            <div className="Details_d2">
-              <span>{restaurant.address}</span>
-              <a
-              className="map-link"
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.address)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              >
-                View Map📍
-              </a>
+              <div className="Details_d1">
+                <span>{restaurant.cuisines}</span>
+              </div>
+              <div className="Details_d2">
+                <span>{restaurant.address}</span>
+                <a
+                  className="map-link"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    restaurant.address
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Map📍
+                </a>
               </div>
               <div className="Details-d3">
                 <div className="Price_Info">
-                  <span className="Price_a">¥{restaurant.lunch_price.toLocaleString()}</span>
+                  <span className="Price_a">
+                    ¥{restaurant.lunch_price.toLocaleString()}
+                  </span>
                   <span>Lunch</span>
                 </div>
                 <div className="Price_Info">
-                  <span className="Price_a">¥{restaurant.dinner_price.toLocaleString()}</span>
+                  <span className="Price_a">
+                    ¥{restaurant.dinner_price.toLocaleString()}
+                  </span>
                   <span>Dinner</span>
                 </div>
               </div>
@@ -85,7 +91,10 @@ const Restaurant = () => {
               <div className="Box_w1">Save</div>
               <div className="Box_w1">Share</div>
               <div className="Box_w1">Directions</div>
-              <div className="Box_w1"><FontAwesomeIcon icon={faPhone} />{restaurant.phone_number}</div>
+              <div className="Box_w1">
+                <FontAwesomeIcon icon={faPhone} />
+                {restaurant.phone_number}
+              </div>
             </div>
           </section>
           <section className="Details-Wrapper">
@@ -93,14 +102,24 @@ const Restaurant = () => {
             <p className="Details-Description">{restaurant.description}</p>
           </section>
 
-          <div>Map</div>
-
+          <div style={{ width: "100%" }}>
+            {restaurant.latitude && restaurant.longitude ? (
+              <MapView
+                markers={[
+                  {
+                    latitude: Number(restaurant.latitude),
+                    longitude: Number(restaurant.longitude),
+                    photo_url: restaurant.photo_url,
+                  },
+                ]}
+                height={342}
+              />
+            ) : (
+              <p>No map location available.</p>
+            )}
+          </div>
         </div>
-        <div className="SideBarWrapper">
-              SideBr
-        </div>
-
-
+        <div className="SideBarWrapper">SideBr</div>
       </div>
     </div>
   );
