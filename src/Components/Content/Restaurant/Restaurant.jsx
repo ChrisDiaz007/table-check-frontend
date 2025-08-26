@@ -3,7 +3,12 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPhone,
+  faLocationDot,
+  faUtensils,
+  faThumbTack,
+} from "@fortawesome/free-solid-svg-icons";
 import MapView from "./MapView";
 
 const Restaurant = () => {
@@ -102,22 +107,78 @@ const Restaurant = () => {
             <p className="Details-Description">{restaurant.description}</p>
           </section>
 
-          <div style={{ width: "100%" }}>
-            {restaurant.latitude && restaurant.longitude ? (
-              <MapView
-                markers={[
-                  {
-                    latitude: Number(restaurant.latitude),
-                    longitude: Number(restaurant.longitude),
-                    photo_url: restaurant.photo_url,
-                  },
-                ]}
-                height={342}
-              />
-            ) : (
-              <p>No map location available.</p>
-            )}
-          </div>
+          <section className="Restaurant-MapBox flex flex-col gap-5">
+            <div style={{ width: "100%" }}>
+              {restaurant.latitude && restaurant.longitude ? (
+                <MapView
+                  markers={[
+                    {
+                      latitude: Number(restaurant.latitude),
+                      longitude: Number(restaurant.longitude),
+                      photo_url: restaurant.photo_url,
+                    },
+                  ]}
+                  height={342}
+                />
+              ) : (
+                <p>No map location available.</p>
+              )}
+            </div>
+            <div className="flex gap-2">
+              <div>
+                <FontAwesomeIcon icon={faLocationDot} />
+              </div>
+              <div>
+                <div>
+                  <p className="font-bold">Address</p>
+                </div>
+                <div>
+                  <p className="font-light">{restaurant.address}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <div>
+                <FontAwesomeIcon icon={faUtensils} />
+              </div>
+              <div>
+                <div>
+                  <p className="font-bold">Cuisine</p>
+                </div>
+                <div>
+                  <p className="font-light">{restaurant.cuisines}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <div>
+                <FontAwesomeIcon icon={faThumbTack} />
+              </div>
+              <div>
+                <div>
+                  <p className="font-bold">Website</p>
+                </div>
+                <div>
+                  <p className="font-light text-purple-500 underline">
+                    <a href={restaurant.website}>{restaurant.website}</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <div>
+                <FontAwesomeIcon icon={faPhone} />
+              </div>
+              <div>
+                <div>
+                  <p className="font-bold">Phone</p>
+                </div>
+                <div>
+                  <p className="font-light">{restaurant.phone_number}</p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         <div className="SideBarWrapper">SideBr</div>
       </div>
