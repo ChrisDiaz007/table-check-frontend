@@ -1,6 +1,6 @@
 // src/Sessions/Login.jsx
 import React, { useState } from "react";
-import { useAuth } from "../../Auth/AuthContent";
+import { useAuth } from "../../Auth/UseAuth";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -44,7 +44,9 @@ export default function Login() {
           <input
             type="password"
             value={form.password}
-            onChange={(e) => setForm((s) => ({ ...s, password: e.target.value }))}
+            onChange={(e) =>
+              setForm((s) => ({ ...s, password: e.target.value }))
+            }
             required
           />
         </label>

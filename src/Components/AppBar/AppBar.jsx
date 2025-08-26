@@ -1,13 +1,13 @@
-import './AppBar.css'
+import "./AppBar.css";
 import logo from "../../assets/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Auth/AuthContent';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Auth/UseAuth";
 
 const AppBar = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuth();
+  const { user: User, isAuthenticated, logout } = useAuth();
 
   const handleClick = () => {
     alert("You clicked");
@@ -25,7 +25,7 @@ const AppBar = () => {
             style={{ cursor: "pointer" }}
           />
         </div>
-        <div className="SecondSection flex-auto">
+        <div className="SecondSection flex flex-auto">
           <button onClick={handleClick} className="UniverseTrigger">
             <FontAwesomeIcon icon={faLocationDot} /> Japan
           </button>
@@ -33,20 +33,41 @@ const AppBar = () => {
             <FontAwesomeIcon icon={faGlobe} /> EN
           </button>
 
-          { isAuthenticated ? (
-            <button onClick={logout}>
-              <p>Logout</p>
-            </button>
+          {isAuthenticated ? (
+            <>
+              <button onClick={() => navigate(`/users/${User.id}`)}>
+                <p>Profile</p>
+              </button>
+              <button onClick={logout}>
+                <p>Logout</p>
+              </button>
+            </>
           ) : (
-            <button onClick={() => navigate("/login")}>
-              <p>Login</p>
-            </button>
-          )
-          }
+            <>
+              <div className="flex items-center gap-3">
+                <div>
+                  <button
+                    className="cursor-pointer"
+                    onClick={() => navigate("/Signup")}
+                  >
+                    Sign-up
+                  </button>
+                </div>
+                <div>
+                  <button
+                    className="cursor-pointer"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AppBar
+export default AppBar;

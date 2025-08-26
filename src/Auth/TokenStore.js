@@ -14,10 +14,8 @@ const TokenStore = {
     accessToken = null;
   },
 
-  /**
-   * Call this on app boot. If a refresh cookie exists, Rails will issue a new access token.
-   * If no cookie or it's expired, this will fail (and we'll remain logged out).
-   */
+  // Call this on app boot. If a refresh cookie exists, Rails will issue a new access token.
+  // If no cookie or it's expired, this will fail (and we'll remain logged out).
   async hydrateFromRefreshCookie() {
     try {
       const resp = await apiBare.post("/api/v1/refresh_token");

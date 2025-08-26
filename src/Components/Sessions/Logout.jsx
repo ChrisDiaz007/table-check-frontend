@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../../Auth/AuthContent'
+import { useAuth } from '../../Auth/AuthContext'
 
 const Logout = () => {
   const { logout } = useAuth()

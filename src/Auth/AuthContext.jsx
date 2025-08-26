@@ -1,8 +1,8 @@
 // src/Auth/AuthContext.jsx
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import api, { apiBare } from "../Api/Axios";
 import TokenStore from "./TokenStore";
-const AuthContext = createContext(null);
+import { AuthContext } from "./Context";
 
 export function AuthProvider({ children }) {
   const [ready, setReady] = useState(false);
@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     (async () => {
       const ok = await TokenStore.hydrateFromRefreshCookie();
-      setHasToken(ok);            // <-- reflect token presence
+      setHasToken(ok); // <-- reflect token presence
       // Optionally load /me here and setUser(...)
       setReady(true);
     })();
@@ -22,13 +22,15 @@ export function AuthProvider({ children }) {
   const isAuthenticated = hasToken; // <-- reactive, not from TokenStore directly
 
   async function login({ email, password }) {
-    const { data } = await apiBare.post("/login", { user: { email, password } });
+    const { data } = await apiBare.post("/login", {
+      user: { email, password },
+    });
     const token = data?.access_token;
     const userAttrs = data?.data;
     if (!token) throw new Error("Login succeeded but access_token missing");
 
     TokenStore.setAccessToken(token);
-    setHasToken(true);            // <-- tell React we have a token now
+    setHasToken(true); // <-- tell React we have a token now
     setUser(userAttrs);
 
     console.log("Logged in. Access Token:", token);
@@ -39,10 +41,13 @@ export function AuthProvider({ children }) {
     try {
       await api.delete("/logout"); // uses Authorization header
     } catch (e) {
-      console.warn("Logout request failed on server; clearing client state anyway.", e);
+      console.warn(
+        "Logout request failed on server; clearing client state anyway.",
+        e
+      );
     }
     TokenStore.clear();
-    setHasToken(false);           // <-- force reactive update
+    setHasToken(false); // <-- force reactive update
     setUser(null);
 
     console.log("User has been logged out. Access token cleared from memory.");
@@ -55,10 +60,4 @@ export function AuthProvider({ children }) {
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
-  return ctx;
 }

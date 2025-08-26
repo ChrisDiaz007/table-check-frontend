@@ -7,6 +7,8 @@ import SearchBar from "./Components/SearchBar/SearchBar"
 import Location from './Components/Content/Location/Location'
 import Restaurant from './Components/Content/Restaurant/Restaurant'
 import User from './Components/User/User'
+import RestaurantNew from './Components/Content/RestaurantNew/RestaurantNew'
+import Signup from './Components/Sessions/Signup'
 
 
 const AppContent = () => {
@@ -20,10 +22,12 @@ const AppContent = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Location />} />
             <Route path='/Restaurants/:id' element={<Restaurant />} />
-            <Route path='/Users/:id' element={<User />} />
+            <Route path='Signup' element={<Signup />} />
 
             {/* Protected route */}
             <Route element={<ProtectedRoute />}>
+            <Route path='/Users/:id' element={<User />} />
+            <Route path='/Restaurants/new' element={<RestaurantNew />} />
               {/* <Route path="/" element={<Home />} /> */}
             </Route>
           </Routes>

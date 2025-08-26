@@ -67,6 +67,9 @@ const User = () => {
           </div>
           <div className="Content">
             <h1>Account</h1>
+            <button onClick={() => navigate('/Restaurants/new')}>
+              <p>New Restaurants</p>
+            </button>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 // src/Sessions/ProtectedRoute.jsx
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../../Auth/AuthContent";
+import { useAuth } from "../../Auth/UseAuth";
 
 export default function ProtectedRoute() {
   const { ready, isAuthenticated } = useAuth();
