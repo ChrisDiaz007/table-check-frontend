@@ -6,17 +6,17 @@
 
 .Sidebar {
   width: 280px;
-  height: 635px
+  height: 635px;
 }
 
-.Content {
+.User-Content {
   width: 600px;
   height: 100vh;
 }
 
 .Login-Wrapper {
   display: flex;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 16px;
   align-items: center;
@@ -30,7 +30,7 @@
   background-color: lightblue;
 }
 
-.Content h1 {
+.User-Content h1 {
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 24px;

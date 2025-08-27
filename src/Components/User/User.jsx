@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TokenStore from "../../Auth/TokenStore";
+import UserRestaurant from "./UserRestaurant";
 
 const User = () => {
   const { id } = useParams();
@@ -50,7 +51,6 @@ const User = () => {
 
   return (
     <div className="User-Detail">
-      <p>test</p>
       <div className="Account-Page">
         <div className="Wrapper">
           <div className="Sidebar">
@@ -69,12 +69,17 @@ const User = () => {
               </Link>
             </div>
           </div>
-          <div className="Content">
-            <h1>Account</h1>
-            <button onClick={() => navigate("/Restaurants/new")}>
-              <p>New Restaurants</p>
-            </button>
-          </div>
+          <section className="User-Content">
+            <h1>Profile</h1>
+
+            <div>
+              <p>My restaurants</p>
+              <p>{user.first_name}</p>
+              <div>
+                <UserRestaurant />
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
