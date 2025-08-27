@@ -1,8 +1,8 @@
 import "./User.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import TokenStore from "../../Auth/TokenStore"; // ✅ default import
+import TokenStore from "../../Auth/TokenStore";
 
 const User = () => {
   const { id } = useParams();
@@ -15,7 +15,7 @@ const User = () => {
 
     (async () => {
       try {
-        const token = TokenStore.getAccessToken(); // ✅ use method from default export
+        const token = TokenStore.getAccessToken(); // use method from default export
         const res = await axios.get(
           `http://localhost:3000/api/v1/users/${id}`,
           {
@@ -63,11 +63,15 @@ const User = () => {
                 <p>{user.email}</p>
               </div>
             </div>
-            <div>Create new restaurant</div>
+            <div>
+              <Link to={"/restaurants/new"}>
+                <p>New Restaurant</p>
+              </Link>
+            </div>
           </div>
           <div className="Content">
             <h1>Account</h1>
-            <button onClick={() => navigate('/Restaurants/new')}>
+            <button onClick={() => navigate("/Restaurants/new")}>
               <p>New Restaurants</p>
             </button>
           </div>

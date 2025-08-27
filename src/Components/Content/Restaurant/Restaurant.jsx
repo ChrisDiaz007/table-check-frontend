@@ -102,6 +102,7 @@ const Restaurant = () => {
               </div>
             </div>
           </section>
+
           <section className="Details-Wrapper">
             <h3 className="Details-About">{restaurant.about}</h3>
             <p className="Details-Description">{restaurant.description}</p>
