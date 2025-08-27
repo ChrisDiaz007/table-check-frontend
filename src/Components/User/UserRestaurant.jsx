@@ -24,64 +24,62 @@ const UserRestaurant = () => {
   }, [id]);
 
   return (
-    <div>
-      <div className="swiper-wrapper">
-        {restaurants.map((restaurant) => (
-          <div className="swiper-slide" key={restaurant.id}>
-            <Link to={`/restaurants/${restaurant.id}`}>
-              <div className="ImageWrapper">
-                {restaurant.photo_url ? (
-                  <img
-                    className="ImageWrapped"
-                    src={restaurant.photo_url}
-                    alt={`${restaurant.name} photo`}
-                    style={{
-                      width: "100%",
-                      height: "175px",
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                    }}
-                  />
-                ) : (
-                  <div>No Image</div>
-                )}
-              </div>
+    <div className="swiper-wrapper">
+      {restaurants.map((restaurant) => (
+        <div className="swiper-slide" key={restaurant.id}>
+          <Link to={`/restaurants/${restaurant.id}`}>
+            <div className="ImageWrapper">
+              {restaurant.photo_url ? (
+                <img
+                  className="ImageWrapped"
+                  src={restaurant.photo_url}
+                  alt={`${restaurant.name} photo`}
+                  style={{
+                    width: "100%",
+                    height: "175px",
+                    objectFit: "cover",
+                    borderRadius: "8px",
+                  }}
+                />
+              ) : (
+                <div>No Image</div>
+              )}
+            </div>
 
-              <div className="CardInfo">
-                <div className="Name_h3">
-                  <h3>{restaurant.name}</h3>
-                </div>
-                <div className="Cuisine_p">
-                  <span className="Cuisine_box">
-                    {restaurant.cuisines && restaurant.cuisines.length > 0 ? (
-                      restaurant.cuisines
-                    ) : (
-                      <span>none</span>
-                    )}
+            <div className="CardInfo">
+              <div className="Name_h3">
+                <h3>{restaurant.name}</h3>
+              </div>
+              <div className="Cuisine_p">
+                <span className="Cuisine_box">
+                  {restaurant.cuisines && restaurant.cuisines.length > 0 ? (
+                    restaurant.cuisines
+                  ) : (
+                    <span>none</span>
+                  )}
+                </span>
+              </div>
+              <div className="About_p">
+                <p>{restaurant.about}</p>
+              </div>
+              <div className="PriceInfo">
+                <div>
+                  <span className="Price_a">
+                    ¥{restaurant.lunch_price.toLocaleString()}
                   </span>
+                  <span> Lunch</span>
                 </div>
-                <div className="About_p">
-                  <p>{restaurant.about}</p>
-                </div>
-                <div className="PriceInfo">
-                  <div>
-                    <span className="Price_a">
-                      ¥{restaurant.lunch_price.toLocaleString()}
-                    </span>
-                    <span> Lunch</span>
-                  </div>
-                  <div>
-                    <span className="Price_a">
-                      ¥{restaurant.dinner_price.toLocaleString()}
-                    </span>
-                    <span> Dinner</span>
-                  </div>
+                <div>
+                  <span className="Price_a">
+                    ¥{restaurant.dinner_price.toLocaleString()}
+                  </span>
+                  <span> Dinner</span>
                 </div>
               </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+            </div>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };
