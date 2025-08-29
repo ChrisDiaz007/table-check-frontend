@@ -3,7 +3,8 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TokenStore from "../../Auth/TokenStore";
-import UserRestaurant from "./UserRestaurant";
+import UserRestaurants from "./UserRestaurants";
+import UpdateProfile from "./UpdateProfile";
 
 const User = () => {
   const { id } = useParams();
@@ -53,14 +54,14 @@ const User = () => {
     <div className="User-Detail">
       <div className="Account-Page">
         <div className="Wrapper">
-          <div className="Sidebar">
+          <section className="Sidebar">
             <div className="Login-Wrapper">
               <div className="icon">🐤</div>
               <div className="details">
-                <p>
+                <p className="font-bold">
                   {user.first_name} {user.last_name}
                 </p>
-                <p>{user.email}</p>
+                <p className="font-light">{user.email}</p>
               </div>
             </div>
             <div>
@@ -68,17 +69,18 @@ const User = () => {
                 <p>New Restaurant</p>
               </Link>
             </div>
-          </div>
+          </section>
           <section className="User-Content">
             <h1>Profile</h1>
 
             <div>
               <p>My restaurants</p>
-              <p>{user.first_name}</p>
               <div>
-                <UserRestaurant />
+                <UserRestaurants />
               </div>
             </div>
+            <UpdateProfile />
+            <div></div>
           </section>
         </div>
       </div>
