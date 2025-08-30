@@ -71,16 +71,15 @@ const User = () => {
             </div>
           </section>
           <section className="User-Content">
-            <h1>Profile</h1>
-
+            <div>
+              <UpdateProfile />
+            </div>
             <div>
               <p>My restaurants</p>
               <div>
                 <UserRestaurants />
               </div>
             </div>
-            <UpdateProfile />
-            <div></div>
           </section>
         </div>
       </div>
