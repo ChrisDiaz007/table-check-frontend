@@ -11,9 +11,9 @@ import Login from "./Components/Sessions/Login";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import Location from "./Components/Content/Location/Location";
 import Restaurant from "./Components/Content/Restaurant/Restaurant";
-import User from "./Components/User/User";
 import RestaurantNew from "./Components/Content/RestaurantNew/RestaurantNew";
 import Signup from "./Components/Sessions/Signup";
+import UserProfile from "./Components/User/UserProfile";
 
 const AppContent = () => {
   const location = useLocation();
@@ -30,7 +30,7 @@ const AppContent = () => {
 
         {/* Protected route */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/Users/:id" element={<User />} />
+          <Route path="/Users/:id" element={<UserProfile />} />
           <Route path="/Restaurants/new" element={<RestaurantNew />} />
           {/* <Route path="/" element={<Home />} /> */}
         </Route>

@@ -1,4 +1,4 @@
-import "./User.css";
+import "./UserProfile.css";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -6,7 +6,7 @@ import TokenStore from "../../Auth/TokenStore";
 import UserRestaurants from "./UserRestaurants";
 import UpdateProfile from "./UpdateProfile";
 
-const User = () => {
+const UserProfile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -87,4 +87,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserProfile;
