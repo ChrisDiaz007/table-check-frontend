@@ -14,6 +14,7 @@ import Restaurant from "./Components/Content/Restaurant/Restaurant";
 import RestaurantNew from "./Components/Content/RestaurantNew/RestaurantNew";
 import Signup from "./Components/Sessions/Signup";
 import UserProfile from "./Components/User/UserProfile";
+import UserRestaurant from "./Components/User/UserRestaurants";
 
 const AppContent = () => {
   const location = useLocation();
@@ -32,6 +33,7 @@ const AppContent = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/Users/:id" element={<UserProfile />} />
           <Route path="/Restaurants/new" element={<RestaurantNew />} />
+          <Route path="/Users/:id/Restaurants" element={<UserRestaurant />} />
           {/* <Route path="/" element={<Home />} /> */}
         </Route>
       </Routes>

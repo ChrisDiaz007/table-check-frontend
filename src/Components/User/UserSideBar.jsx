@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import TokenStore from "../../Auth/TokenStore";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser, faUtensils } from "@fortawesome/free-solid-svg-icons";
 
 const UserSideBar = () => {
   const { id } = useParams();
@@ -26,7 +28,7 @@ const UserSideBar = () => {
   }, [id, navigate])
 
   return (
-    <section className="User-SideBar">
+    <section className="User-SideBar flex flex-col gap-4">
       <div className="User-Info-Wrapper">
         <div className="User-Info-icon">🐤</div>
         <div className="User-Info-details">
@@ -36,9 +38,12 @@ const UserSideBar = () => {
           <p className="font-light">{user.email}</p>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col gap-1">
         <Link to={`/users/${id}`} className="User-SideBar-Links">
-          Profile
+          <FontAwesomeIcon icon={faCircleUser} className="fa-xl" /> Profile
+        </Link>
+        <Link to={`/users/${id}/restaurants`} className="User-SideBar-Links">
+          <FontAwesomeIcon icon={faUtensils} className="fa-xl" /> Restaurants
         </Link>
       </div>
     </section>
