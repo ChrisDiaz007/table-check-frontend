@@ -27,14 +27,14 @@ const UserRestaurant = () => {
 
   return (
     <div className="User-Restaurants">
-      <div className="Wrapper">
+      <div className="Wrapper flex flex-wrap">
         <section className="Sidebar">
           <div>
             <UserSideBar />
           </div>
         </section>
         <section className="User-Display-Resturants flex-1 flex flex-col gap-5">
-          <div className="flex justify-between items-end">
+          <div className="flex flex-wrap justify-between items-end gap-4">
             <div>
               <h1 className="font-bold text-3xl">Restaurants</h1>
             </div>
@@ -47,69 +47,71 @@ const UserRestaurant = () => {
               </Link>
             </div>
           </div>
-          <div className="swiper-wrapper">
-            {restaurants.length === 0 ? (
-              <p>No Restaurants Found</p>
-            ) : (
-              <div>
-                {restaurants.map((restaurant) => (
-                  <div className="swiper-slide" key={restaurant.id}>
-                    <Link to={`/restaurants/${restaurant.id}`}>
-                      <div className="ImageWrapper">
-                        {restaurant.photo_url ? (
-                          <img
-                            className="ImageWrapped"
-                            src={restaurant.photo_url}
-                            alt={`${restaurant.name} photo`}
-                            style={{
-                              width: "100%",
-                              height: "175px",
-                              objectFit: "cover",
-                              borderRadius: "8px",
-                            }}
-                          />
-                        ) : (
-                          <div>No Image</div>
-                        )}
-                      </div>
+          <div>
+            <div className="swiper-wrapper">
+              {restaurants.length === 0 ? (
+                <p>No Restaurants Found</p>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {restaurants.map((restaurant) => (
+                    <div className="swiper-slide" key={restaurant.id}>
+                      <Link to={`/restaurants/${restaurant.id}`}>
+                        <div className="ImageWrapper">
+                          {restaurant.photo_url ? (
+                            <img
+                              className="ImageWrapped"
+                              src={restaurant.photo_url}
+                              alt={`${restaurant.name} photo`}
+                              style={{
+                                width: "100%",
+                                height: "175px",
+                                objectFit: "cover",
+                                borderRadius: "8px",
+                              }}
+                            />
+                          ) : (
+                            <div>No Image</div>
+                          )}
+                        </div>
 
-                      <div className="CardInfo">
-                        <div className="Name_h3">
-                          <h3>{restaurant.name}</h3>
-                        </div>
-                        <div className="Cuisine_p">
-                          <span className="Cuisine_box">
-                            {restaurant.cuisines &&
-                            restaurant.cuisines.length > 0 ? (
-                              restaurant.cuisines
-                            ) : (
-                              <span>none</span>
-                            )}
-                          </span>
-                        </div>
-                        <div className="About_p">
-                          <p>{restaurant.about}</p>
-                        </div>
-                        <div className="PriceInfo">
-                          <div>
-                            <span className="Price_a">
-                              ¥{restaurant.lunch_price.toLocaleString()}
-                            </span>
-                            <span> Lunch</span>
+                        <div className="CardInfo">
+                          <div className="Name_h3">
+                            <h3>{restaurant.name}</h3>
                           </div>
-                          <div>
-                            <span className="Price_a">
-                              ¥{restaurant.dinner_price.toLocaleString()}
+                          <div className="Cuisine_p">
+                            <span className="Cuisine_box">
+                              {restaurant.cuisines &&
+                              restaurant.cuisines.length > 0 ? (
+                                restaurant.cuisines
+                              ) : (
+                                <span>none</span>
+                              )}
                             </span>
-                            <span> Dinner</span>
+                          </div>
+                          <div className="About_p">
+                            <p>{restaurant.about}</p>
+                          </div>
+                          <div className="PriceInfo">
+                            <div>
+                              <span className="Price_a">
+                                ¥{restaurant.lunch_price.toLocaleString()}
+                              </span>
+                              <span> Lunch</span>
+                            </div>
+                            <div>
+                              <span className="Price_a">
+                                ¥{restaurant.dinner_price.toLocaleString()}
+                              </span>
+                              <span> Dinner</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            )}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </section>
       </div>
