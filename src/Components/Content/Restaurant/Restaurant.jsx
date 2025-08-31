@@ -1,5 +1,5 @@
 import "./Restaurant.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,10 +10,14 @@ import {
   faThumbTack,
 } from "@fortawesome/free-solid-svg-icons";
 import MapView from "./MapView";
+import TokenStore from "../../../Auth/TokenStore";
+import { useAuth } from "../../../Auth/UseAuth";
 
 const Restaurant = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
+  const { user: User } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -26,8 +30,8 @@ const Restaurant = () => {
           id: Number(item.id),
           ...item.attributes,
         };
-
         setRestaurant(flatRestaurant);
+        console.log(flatRestaurant);
       })
       .catch((error) => {
         console.error("Error fetching restaurant", error);
@@ -36,8 +40,21 @@ const Restaurant = () => {
 
   if (!restaurant) return <div>Loading...</div>;
 
+  const handleDelete = async (id) => {
+    const token = TokenStore.getAccessToken();
+
+    axios.delete(`http://localhost:3000/api/v1/restaurants/${id}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    alert("Restaurant Delete!");
+    navigate(`/users/${User.id}/restaurants`);
+    window.location.reload();
+  };
+
+  console.log(User);
+
   return (
-    <div className="Content_res">
+    <div className="Content_res pb-5">
       <div className="MosaicWrapper">
         <div className="Wrapper_w1">
           <div className="Mosaic_mp">
@@ -182,6 +199,24 @@ const Restaurant = () => {
           </section>
         </div>
         <div className="SideBarWrapper">SideBr</div>
+      </div>
+      <div>
+        {User && (User.admin || User.id === restaurant.user_id) && (
+          <button
+            onClick={() => {
+              if (
+                window.confirm(
+                  "Are you sure you want to delete this restaurant?"
+                )
+              ) {
+                handleDelete(restaurant.id);
+              }
+            }}
+            className="p-2 bg-red-400 text-white rounded"
+          >
+            Delete Restaurant
+          </button>
+        )}
       </div>
     </div>
   );

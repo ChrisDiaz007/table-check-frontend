@@ -11,7 +11,7 @@ import Login from "./Components/Sessions/Login";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import Location from "./Components/Content/Location/Location";
 import Restaurant from "./Components/Content/Restaurant/Restaurant";
-import RestaurantNew from "./Components/Content/RestaurantNew/RestaurantNew";
+import RestaurantNew from "./Components/Content/Restaurant/RestaurantNew";
 import Signup from "./Components/Sessions/Signup";
 import UserProfile from "./Components/User/UserProfile";
 import UserRestaurant from "./Components/User/UserRestaurants";

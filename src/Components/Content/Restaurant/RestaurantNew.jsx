@@ -22,7 +22,7 @@ const RestaurantNew = () => {
     lunch_price: "",
     dinner_price: "",
     photo: null,
-    // cuisine_ids: "",
+    cuisine_ids: [],
   });
 
   const handleInput = (event) => {
