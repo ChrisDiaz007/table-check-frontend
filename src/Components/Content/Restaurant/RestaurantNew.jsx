@@ -55,7 +55,8 @@ const RestaurantNew = () => {
       })
       .then(
         (response) => console.log("Form Submitted Successfully", response),
-        navigate(`/users/${User.id}/restaurants`)
+        navigate(`/users/${User.id}/restaurants`),
+        window.location.reload()
       )
       .catch((error) => console.log("Error submitting form", error));
   };
@@ -63,7 +64,7 @@ const RestaurantNew = () => {
   // prettier-ignore
   return (
     <section className="Restaurant-New flex justify-center">
-      <div className="w-125 flex flex-col pt-10">
+      <div className="w-150 flex flex-col pt-10">
         <form onSubmit={handleSubmit} className="flex flex-col gap-1">
           <p className="font-semibold text-3xl">New Restaurant Form</p>
           Name : <input type="text" onChange={handleInput} name="name" className="border rounded-md p-2"/>
@@ -75,7 +76,7 @@ const RestaurantNew = () => {
                           onChange={handleInput}
                           name="description"
                           rows={4}
-                          className="border rounded-md w-full h-24 p-2 resize-y align-top"
+                          className="border rounded-md w-full h-34 p-2 resize-y align-top"
                         />
           Phone Number : <input type="text" onChange={handleInput} name="phone_number" className="border rounded-md p-2"/>
           Website : <input type="text" onChange={handleInput} name="website" className="border rounded-md p-2"/>
@@ -85,7 +86,7 @@ const RestaurantNew = () => {
           {/* Cuisine: <input type="text" onChange={handleInput} name="cuisine_ids" className="border rounded-md p-2"/> */}
           Photo : <input type="file" onChange={handleFileInput} name="photo" accept="image/*" required className="border rounded w-55 p-2"/>
           
-          <span>
+          <span className="flex justify-center pt-5">
             <button type="submit" className="bg-purple-300 p-3 rounded-md">
             Create New Restaurant
           </button>

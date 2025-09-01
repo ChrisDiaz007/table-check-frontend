@@ -8,8 +8,8 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState({
+  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
     first_name: "",
     last_name: "",
     phone_number: "",
@@ -37,7 +37,7 @@ const UpdateProfile = () => {
   // Update User
   const handleInput = (event) => {
     const { name, value } = event.target;
-    setProfile((prev) => ({ ...prev, [name]: value }));
+    setUser((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
@@ -47,13 +47,9 @@ const UpdateProfile = () => {
     // Use FormData instead of JSON
     const formData = new FormData();
     // Only append fields that have values (similar to restaurant edit)
-    Object.keys(profile).forEach((key) => {
-      if (
-        profile[key] !== null &&
-        profile[key] !== undefined &&
-        profile[key] !== ""
-      ) {
-        formData.append(`user[${key}]`, profile[key]);
+    Object.keys(user).forEach((key) => {
+      if (user[key] !== null && user[key] !== undefined && user[key] !== "") {
+        formData.append(`user[${key}]`, user[key]);
       }
     });
 
@@ -82,11 +78,11 @@ const UpdateProfile = () => {
           <div className="flex gap-6">
             <div className="flex flex-col">
               <p>First Name</p>
-              <input type="text" onChange={handleInput} name="first_name" placeholder={user.first_name} className="border p-1.5"/>
+              <input type="text" onChange={handleInput} name="first_name" value={user.first_name} className="border p-1.5"/>
             </div>
             <div className="flex flex-col">
               <p>Last Name</p>
-              <input type="text" onChange={handleInput} name="last_name" placeholder={user.last_name} className="border p-1.5" />
+              <input type="text" onChange={handleInput} name="last_name" value={user.last_name} className="border p-1.5" />
             </div>
           </div>
           <div>
@@ -95,9 +91,7 @@ const UpdateProfile = () => {
           </div>
           <div>
               <p>Phone Number</p>
-              <input type="text" onChange={handleInput} name="phone_number" 
-              placeholder={user.phone_number ? user.phone_number : "🇯🇵 Phone Number"} 
-              className="border p-1.5"/>
+              <input type="text" onChange={handleInput} name="phone_number" value={user.phone_number} className="border p-1.5"/>
           </div>
         <button type="Submit">Save Profile</button>
         </form>
