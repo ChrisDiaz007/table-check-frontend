@@ -15,6 +15,7 @@ import RestaurantNew from "./Components/Content/Restaurant/RestaurantNew";
 import Signup from "./Components/Sessions/Signup";
 import UserProfile from "./Components/User/UserProfile";
 import UserRestaurant from "./Components/User/UserRestaurants";
+import RestaurantEdit from "./Components/Content/Restaurant/RestaurantEdit";
 
 const AppContent = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const AppContent = () => {
           <Route path="/Users/:id" element={<UserProfile />} />
           <Route path="/Restaurants/new" element={<RestaurantNew />} />
           <Route path="/Users/:id/Restaurants" element={<UserRestaurant />} />
+          <Route path="Restaurants/:id/edit" element={<RestaurantEdit />} />
           {/* <Route path="/" element={<Home />} /> */}
         </Route>
       </Routes>

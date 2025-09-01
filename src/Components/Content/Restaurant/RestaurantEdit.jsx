@@ -1,13 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import TokenStore from "../../../Auth/TokenStore";
-import { useAuth } from "../../../Auth/UseAuth";
 
-const RestaurantNew = () => {
+const RestaurantEdit = () => {
   const navigate = useNavigate();
-  const token = TokenStore.getAccessToken();
-  const { user: User } = useAuth();
+  const { id } = useParams();
 
   const [restaurant, setRestaurant] = useState({
     name: "",
@@ -25,12 +23,28 @@ const RestaurantNew = () => {
     // cuisine_ids: [],
   });
 
+  // Load Restaurant
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/api/v1/restaurants/${id}`, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((res) => {
+        const item = res.data.data;
+        setRestaurant({ id: item.id, ...item.attributes });
+      })
+      .catch((error) => {
+        console.error("Error fetching restaurant", error);
+      });
+  }, [id]);
+  console.log(restaurant);
+
+  // Update Restaurant
   const handleInput = (event) => {
     const { name, value } = event.target;
     setRestaurant((prev) => ({ ...prev, [name]: value }));
   };
 
-  //Photo
   const handleFileInput = (event) => {
     const { name, files } = event.target;
     setRestaurant((prev) => ({ ...prev, [name]: files[0] }));
@@ -38,35 +52,34 @@ const RestaurantNew = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const token = TokenStore.getAccessToken();
     const formData = new FormData();
     Object.keys(restaurant).forEach((key) => {
       if (restaurant[key] !== null) {
         formData.append(`restaurant[${key}]`, restaurant[key]);
       }
     });
-
     axios
-      .post("http://localhost:3000/api/v1/restaurants", formData, {
+      .patch(`http://localhost:3000/api/v1/restaurants/${id}`, formData, {
         withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
+        "Content-Type": "multipart/form-data",
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
       })
       .then(
-        (response) => console.log("Form Submitted Successfully", response),
-        navigate(`/users/${User.id}/restaurants`)
+        (response) => response,
+        navigate(`/restaurants/${id}`),
+        window.location.reload()
       )
-      .catch((error) => console.log("Error submitting form", error));
+      .catch((error) => console.log("Error Updating Restaurant", error));
   };
 
-  // prettier-ignore
   return (
+    // prettier-ignore
     <section className="Restaurant-New flex justify-center">
       <div className="w-125 flex flex-col pt-10">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-1">
-          <p className="font-semibold text-3xl">New Restaurant Form</p>
-          Name : <input type="text" onChange={handleInput} name="name" className="border rounded-md p-2"/>
+        <form onSubmit={handleSubmit} className="flex flex-col">
+          <p className="font-semibold text-3xl">Update Restaurant</p>
+          Name : <input type="text" onChange={handleInput} name="name" placeholder={restaurant.name} className="border rounded-md p-2"/>
           Address : <input type="text" onChange={handleInput} name="address" className="border rounded-md p-2"/>
           Prefecture : <input type="text" onChange={handleInput} name="prefecture" className="border rounded-md p-2"/>
           District : <input type="text" onChange={handleInput} name="district" className="border rounded-md p-2"/>
@@ -82,18 +95,13 @@ const RestaurantNew = () => {
           Total Tables : <input type="text" onChange={handleInput} name="total_tables" className="border rounded-md p-2"/>
           Lunch Price : <input type="text" onChange={handleInput} name="lunch_price" className="border rounded-md p-2"/>
           Dinner Price : <input type="text" onChange={handleInput} name="dinner_price" className="border rounded-md p-2"/>
-          {/* Cuisine: <input type="text" onChange={handleInput} name="cuisine_ids" className="border rounded-md p-2"/> */}
-          Photo : <input type="file" onChange={handleFileInput} name="photo" accept="image/*" required className="border rounded w-55 p-2"/>
-          
-          <span>
-            <button type="submit" className="bg-purple-300 p-3 rounded-md">
-            Create New Restaurant
-          </button>
-          </span>
+          Photo : <input type="file" onChange={handleFileInput} name="photo" className="border rounded w-55 p-2"/>
+
+          <button type="Submit" className="border">Save Restaurant</button>
         </form>
       </div>
     </section>
   );
 };
 
-export default RestaurantNew;
+export default RestaurantEdit;

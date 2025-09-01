@@ -20,6 +20,7 @@ const UpdateProfile = () => {
     const token = TokenStore.getAccessToken();
     axios
       .get(`http://localhost:3000/api/v1/users/${id}`, {
+        "Content-Type": "application/json",
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       })
       .then((res) => {
@@ -31,6 +32,7 @@ const UpdateProfile = () => {
       });
   }, [id, navigate]);
   if (!user) return <div>Loading...</div>;
+  console.log(user);
 
   // Update User
   const handleInput = (event) => {
@@ -39,14 +41,32 @@ const UpdateProfile = () => {
   };
 
   const handleSubmit = async (event) => {
-    const token = TokenStore.getAccessToken();
     event.preventDefault();
+    const token = TokenStore.getAccessToken();
+
+    // Use FormData instead of JSON
+    const formData = new FormData();
+    // Only append fields that have values (similar to restaurant edit)
+    Object.keys(profile).forEach((key) => {
+      if (
+        profile[key] !== null &&
+        profile[key] !== undefined &&
+        profile[key] !== ""
+      ) {
+        formData.append(`user[${key}]`, profile[key]);
+      }
+    });
+
     axios
-      .patch(
-        `http://localhost:3000/api/v1/users/${id}`,
-        { user: profile },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
+      .patch(`http://localhost:3000/api/v1/users/${id}`, formData, {
+        withCredentials: true,
+        headers: token
+          ? {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            }
+          : {},
+      })
       .then((response) => response, window.location.reload())
       .catch((error) => console.log("Error submitting form", error));
   };

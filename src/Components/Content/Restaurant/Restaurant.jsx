@@ -200,23 +200,35 @@ const Restaurant = () => {
         </div>
         <div className="SideBarWrapper">SideBr</div>
       </div>
-      <div>
-        {User && (User.admin || User.id === restaurant.user_id) && (
-          <button
-            onClick={() => {
-              if (
-                window.confirm(
-                  "Are you sure you want to delete this restaurant?"
-                )
-              ) {
-                handleDelete(restaurant.id);
-              }
-            }}
-            className="p-2 bg-red-400 text-white rounded"
-          >
-            Delete Restaurant
-          </button>
-        )}
+      <div className="flex gap-5 flex-col">
+        <div>
+          {User && (User.admin || User.id === restaurant.user_id) && (
+            <Link
+              to={`/restaurants/${id}/edit`}
+              className="bg-green-400 p-3 rounded"
+            >
+              Edit Restaurant
+            </Link>
+          )}
+        </div>
+        <div>
+          {User && (User.admin || User.id === restaurant.user_id) && (
+            <button
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Are you sure you want to delete this restaurant?"
+                  )
+                ) {
+                  handleDelete(restaurant.id);
+                }
+              }}
+              className="p-2 bg-red-400 text-white rounded cursor-pointer"
+            >
+              Delete Restaurant
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
