@@ -2,6 +2,10 @@ import "./Location.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Location = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -28,11 +32,22 @@ const Location = () => {
   }, []);
 
   return (
-    <div className="swiper">
-      <div className="Header_h1">Available in Tokyo</div>
-      <div className="swiper-wrapper">
+    <section className="Restaurant-Locations py-10">
+      <div className="Header_h1 pb-3">Available in Tokyo</div>
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        slidesPerView={4}
+        spaceBetween={16}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 4 },
+        }}
+        className=""
+      >
         {restaurants.map((restaurant) => (
-          <div className="swiper-slide" key={restaurant.id}>
+          <SwiperSlide className="swiper-slide" key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`}>
               <div className="ImageWrapper">
                 {restaurant.photo_url ? (
@@ -84,10 +99,10 @@ const Location = () => {
                 </div>
               </div>
             </Link>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
-    </div>
+      </Swiper>
+    </section>
   );
 };
 

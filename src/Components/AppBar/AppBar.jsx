@@ -14,9 +14,9 @@ const AppBar = () => {
   };
 
   return (
-    <div className="Desktop-Header">
+    <section className="AppBar">
       <div className="Navbar-Container">
-        <div className="FirstSection w-170">
+        <div className="FirstSection">
           <img
             src={logo}
             alt="Company logo"
@@ -25,7 +25,7 @@ const AppBar = () => {
             style={{ cursor: "pointer" }}
           />
         </div>
-        <div className="SecondSection flex flex-auto">
+        <div className="SecondSection flex">
           <button onClick={handleClick} className="UniverseTrigger">
             <FontAwesomeIcon icon={faLocationDot} /> Japan
           </button>
@@ -44,10 +44,10 @@ const AppBar = () => {
             </>
           ) : (
             <>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 ps-3">
                 <div>
                   <button
-                    className="cursor-pointer"
+                    className="cursor-pointer hover:bg-gray-300 p-2 rounded-md"
                     onClick={() => navigate("/Signup")}
                   >
                     Sign-up
@@ -55,7 +55,7 @@ const AppBar = () => {
                 </div>
                 <div>
                   <button
-                    className="cursor-pointer"
+                    className="cursor-pointer bg-black text-white p-2 rounded-md"
                     onClick={() => navigate("/login")}
                   >
                     Login
@@ -66,7 +66,7 @@ const AppBar = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

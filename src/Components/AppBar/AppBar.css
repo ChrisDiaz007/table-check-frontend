@@ -1,13 +1,25 @@
-.Desktop-Header{
+.AppBar {
+  display: flex;
+  justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.Desktop-Navbar {
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); */
   padding: 21px;
+  max-width: 1120px;
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
 .Navbar-Container {
   display: flex;
-  max-width: 1120px;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
+  width: 1120px;
+  justify-content: space-between;
+  padding: 22px;
 }
 
 .FirstSection {
@@ -16,7 +28,7 @@
 }
 
 .logo {
-  width: 200px;
+  width: 170px;
 }
 
 .UniverseTrigger {
@@ -25,7 +37,7 @@
   padding: 8px;
   gap: 8px;
 }
-.UniverseTrigger:hover{
+.UniverseTrigger:hover {
   border-color: black;
   background-color: lightgray;
 }
