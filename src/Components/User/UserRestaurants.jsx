@@ -26,7 +26,7 @@ const UserRestaurant = () => {
   }, [id]);
 
   return (
-    <div className="User-Restaurants">
+    <section className="User-Restaurants">
       <div className="Wrapper flex flex-wrap">
         <section className="Sidebar">
           <div>
@@ -121,7 +121,7 @@ const UserRestaurant = () => {
           </div>
         </section>
       </div>
-    </div>
+    </section>
   );
 };
 

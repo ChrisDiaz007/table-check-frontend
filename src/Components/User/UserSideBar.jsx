@@ -4,7 +4,11 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import TokenStore from "../../Auth/TokenStore";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser, faUtensils } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChair,
+  faCircleUser,
+  faUtensils,
+} from "@fortawesome/free-solid-svg-icons";
 
 const UserSideBar = () => {
   const { id } = useParams();
@@ -44,6 +48,9 @@ const UserSideBar = () => {
         </Link>
         <Link to={`/users/${id}/restaurants`} className="User-SideBar-Links">
           <FontAwesomeIcon icon={faUtensils} className="fa-xl" /> Restaurants
+        </Link>
+        <Link to={`/users/${id}/tables`} className="User-SideBar-Links">
+          <FontAwesomeIcon icon={faChair} className="fa-xl" /> Manage Tables
         </Link>
       </div>
     </section>
