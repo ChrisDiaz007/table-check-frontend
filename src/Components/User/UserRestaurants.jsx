@@ -54,7 +54,7 @@ const UserRestaurant = () => {
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {restaurants.map((restaurant) => (
-                    <div className="swiper-slide" key={restaurant.id}>
+                    <div className="swiper-slider" key={restaurant.id}>
                       <Link to={`/restaurants/${restaurant.id}`}>
                         <div className="ImageWrapper">
                           {restaurant.photo_url ? (

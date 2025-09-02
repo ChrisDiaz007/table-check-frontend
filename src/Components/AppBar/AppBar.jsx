@@ -34,14 +34,20 @@ const AppBar = () => {
           </button>
 
           {isAuthenticated ? (
-            <>
-              <button onClick={() => navigate(`/users/${User.id}`)}>
+            <div className="flex items-center gap-3 ps-3">
+              <button
+                className="cursor-pointer hover:bg-gray-300 p-2 rounded-md"
+                onClick={() => navigate(`/users/${User.id}`)}
+              >
                 <p>Profile</p>
               </button>
-              <button onClick={logout}>
+              <button
+                className="cursor-pointer bg-black text-white p-2 rounded-md"
+                onClick={logout}
+              >
                 <p>Logout</p>
               </button>
-            </>
+            </div>
           ) : (
             <>
               <div className="flex items-center gap-2 ps-3">
