@@ -16,6 +16,7 @@ import Signup from "./Components/Sessions/Signup";
 import UserProfile from "./Components/User/UserProfile";
 import UserRestaurant from "./Components/User/UserRestaurants";
 import RestaurantEdit from "./Components/Content/Restaurant/RestaurantEdit";
+import BookingForm from "./Components/Content/Reservations/BookingForm";
 
 const AppContent = () => {
   const location = useLocation();
@@ -36,6 +37,10 @@ const AppContent = () => {
           <Route path="/Restaurants/new" element={<RestaurantNew />} />
           <Route path="/Users/:id/Restaurants" element={<UserRestaurant />} />
           <Route path="Restaurants/:id/edit" element={<RestaurantEdit />} />
+          <Route
+            path="Restaurants/:id/reservations"
+            element={<BookingForm />}
+          />
           {/* <Route path="/" element={<Home />} /> */}
         </Route>
       </Routes>
