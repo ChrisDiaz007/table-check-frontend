@@ -105,6 +105,12 @@ const UserRestaurant = () => {
                               <span> Dinner</span>
                             </div>
                           </div>
+                          <div>
+                            <p>
+                              Number of Tables Created:{" "}
+                              {restaurant.tables?.length || 0}
+                            </p>
+                          </div>
                         </div>
                       </Link>
                     </div>
