@@ -12,15 +12,6 @@ const BookingForm = () => {
     party_size: "",
   });
 
-  // const times = useMemo(() => {
-  //   const out = [];
-  //   for (let h = 17; h <= 22; h++) {
-  //     const hh = String(h).padStart(2, "0");
-  //     out.push(`${hh}:00`, `${hh}:30`);
-  //   }
-  //   return out;
-  // }, []);
-
   const handleInput = (event) => {
     const { name, value } = event.target;
     setReservation((prev) => ({ ...prev, [name]: value }));
@@ -43,7 +34,11 @@ const BookingForm = () => {
       .then((response) =>
         console.log("Reservation Submitted Successfully", response)
       )
-      .catch((error) => console.log("Error submitting form", error));
+      .catch((error) => {
+        console.error("Reservation failed", error);
+        const msg = "That time is already booked. Please choose another slot.";
+        alert(msg, error);
+      });
   };
 
   return (
