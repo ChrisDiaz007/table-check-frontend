@@ -30,8 +30,16 @@ const TableNew = () => {
           },
         }
       )
-      .then((response) => console.log("Form Submitted Succesfully", response))
-      .catch((error) => console.log("Error submitting form", error));
+      .then((response) => {
+        const msg = "Table Created";
+        alert(msg);
+        console.log(msg, response);
+      })
+      .catch((error) => {
+        const msg = "Table number already exists";
+        alert(msg);
+        console.error(msg, error);
+      });
   };
 
   return (

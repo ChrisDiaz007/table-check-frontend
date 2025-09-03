@@ -17,7 +17,7 @@ const RestaurantNew = () => {
     description: "",
     phone_number: "",
     website: "",
-    total_tables: "",
+    // total_tables: "",
     about: "",
     lunch_price: "",
     dinner_price: "",
@@ -80,7 +80,6 @@ const RestaurantNew = () => {
                         />
           Phone Number : <input type="text" onChange={handleInput} name="phone_number" className="border rounded-md p-2"/>
           Website : <input type="text" onChange={handleInput} name="website" className="border rounded-md p-2"/>
-          Total Tables : <input type="text" onChange={handleInput} name="total_tables" className="border rounded-md p-2"/>
           Lunch Price : <input type="text" onChange={handleInput} name="lunch_price" className="border rounded-md p-2"/>
           Dinner Price : <input type="text" onChange={handleInput} name="dinner_price" className="border rounded-md p-2"/>
           {/* Cuisine: <input type="text" onChange={handleInput} name="cuisine_ids" className="border rounded-md p-2"/> */}

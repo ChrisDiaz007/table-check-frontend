@@ -91,7 +91,7 @@ const UpdateProfile = () => {
           </div>
           <div>
               <p>Phone Number</p>
-              <input type="text" onChange={handleInput} name="phone_number" value={user.phone_number} className="border p-1.5"/>
+              <input type="text" onChange={handleInput} name="phone_number" value={user.phone_number ?? ""} className="border p-1.5"/>
           </div>
         <button  className="cursor-pointer bg-black text-white p-2 rounded-md" type="Submit">Save Profile</button>
         </form>
