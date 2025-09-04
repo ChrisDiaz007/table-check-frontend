@@ -10,6 +10,7 @@ const TableNew = () => {
     number: "",
     seats: "",
   });
+  console.log(table);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -45,13 +46,19 @@ const TableNew = () => {
   return (
     // prettier-ignore
     <section className="Table-New">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <p>Add new Table</p>
-        Talbe Number <input type="text" onChange={handleInput} name="number" className="border"/>
-        Seats: <input type="text" onChange={handleInput} name="seats" className="border" />
-        
-        <button className="bg-black text-white p-2">Create Table</button>
-      </form>
+      <div className="flex justify-center pt-10">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-100 border rounded-md p-8">
+          <div>
+            <p className="font-semibold text-3xl">Add New Table</p>
+          </div>
+          <div className="flex flex-col">
+            Table Number <input type="text" onChange={handleInput} name="number" className="border"/>
+            Number of Seats: <input type="text" onChange={handleInput} name="seats" className="border" />
+          </div>
+          
+          <button className="bg-black text-white p-2">Create Table</button>
+        </form>
+      </div>
     </section>
   );
 };

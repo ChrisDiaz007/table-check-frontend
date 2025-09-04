@@ -62,18 +62,30 @@ const UserTables = () => {
                     <div className="flex flex-col gap-5">
                       <Link
                         to={`/restaurants/${restaurant.id}/Tables/new`}
-                        className="bg-green-400 p-2 rounded-md hover:bg-green-500"
+                        className="bg-green-400 p-2 rounded-md hover:bg-green-500 text-center"
                       >
                         Create Table
                       </Link>
-                      <p>Edit Tables</p>
+                      <Link
+                        to={`/restaurants/${restaurant.id}/Tables/edit`}
+                        className="rounded-md p-2 bg-yellow-400 text-center hover:bg-yellow-500"
+                      >
+                        Edit Tables
+                      </Link>
                     </div>
                   </div>
                   {restaurant.tables.map((table) => (
                     <div key={table.id}>
-                      <p>
-                        Table Number: {table.number}, seats: {table.seats}
-                      </p>
+                      <div className="flex border p-1 rounded-md w-85">
+                        <div className="flex gap-2 w-40">
+                          <p>Table Number:</p>
+                          <p>{table.number}</p>
+                        </div>
+                        <div className="flex gap-2">
+                          <p>Number of Seats:</p>
+                          <p>{table.seats}</p>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>

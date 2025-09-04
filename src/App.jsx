@@ -20,6 +20,7 @@ import BookingForm from "./Components/Content/Reservations/BookingForm";
 import TableNew from "./Components/Content/Tables/TableNew";
 import UserTables from "./Components/User/UserTables";
 import UserBookings from "./Components/User/UserBookings";
+import TablesEdit from "./Components/Content/Tables/TablesEdit";
 
 const AppContent = () => {
   const location = useLocation();
@@ -42,11 +43,12 @@ const AppContent = () => {
           <Route path="/Users/:id/Restaurants" element={<UserRestaurant />} />
           <Route path="/Users/:id/Tables" element={<UserTables />} />
           <Route path="Restaurants/:id/edit" element={<RestaurantEdit />} />
+          <Route path="Restaurants/:id/Tables/new" element={<TableNew />} />
+          <Route path="Restaurants/:id/Tables/edit" element={<TablesEdit />} />
           <Route
             path="Restaurants/:id/reservations"
             element={<BookingForm />}
           />
-          <Route path="Restaurants/:id/Tables/new" element={<TableNew />} />
           {/* <Route path="/" element={<Home />} /> */}
         </Route>
       </Routes>
