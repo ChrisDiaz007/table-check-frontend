@@ -5,6 +5,7 @@ import TokenStore from "../../Auth/TokenStore";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBook,
   faChair,
   faCircleUser,
   faUtensils,
@@ -45,6 +46,9 @@ const UserSideBar = () => {
       <div className="flex flex-col gap-1">
         <Link to={`/users/${id}`} className="User-SideBar-Links">
           <FontAwesomeIcon icon={faCircleUser} className="fa-xl" /> Profile
+        </Link>
+        <Link to={`/users/${id}/bookings`} className="User-SideBar-Links">
+          <FontAwesomeIcon icon={faBook} className="fa-xl" /> Bookings
         </Link>
         <Link to={`/users/${id}/restaurants`} className="User-SideBar-Links">
           <FontAwesomeIcon icon={faUtensils} className="fa-xl" /> Restaurants
