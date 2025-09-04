@@ -12,6 +12,7 @@ import {
 import MapView from "./MapView";
 import TokenStore from "../../../Auth/TokenStore";
 import { useAuth } from "../../../Auth/UseAuth";
+import BookingWidget from "./BookingWidget";
 
 const Restaurant = () => {
   const { id } = useParams();
@@ -198,7 +199,9 @@ const Restaurant = () => {
             </div>
           </section>
         </div>
-        <div className="SideBarWrapper">SideBr</div>
+        <div className="SideBarWrapper">
+          <BookingWidget />
+        </div>
       </div>
       <div className="flex gap-5 flex-col">
         <div>

@@ -1,19 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import TokenStore from "../../../Auth/TokenStore";
 import axios from "axios";
 import { Calendar } from "@/Components/ui/calendar";
 
-const BookingForm = () => {
+const BookingWidget = () => {
   const { id } = useParams();
   const token = TokenStore.getAccessToken();
   const [reservation, setReservation] = useState({
     reservation_time: "",
     party_size: "",
   });
-  const [hours, setHours] = useState([]);
   const [date, setDate] = useState(new Date());
   console.log(reservation);
+  const [hours, setHours] = useState([]);
 
   useEffect(() => {
     axios
@@ -109,10 +109,10 @@ const BookingForm = () => {
   };
 
   return (
-    <section className="Booking-Form">
+    <section className="Booking-Widget">
       <div className="flex justify-center pt-20">
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <div className="rounded-xl border shadow-sm p-3 w-[316px] flex flex-col gap-4">
+          <div className="rounded-xl border shadow-sm p-3 w-[316px] flex flex-col gap-3">
             <Calendar
               mode="single"
               selected={date}
@@ -133,7 +133,7 @@ const BookingForm = () => {
               className="rounded-lg w-[290px] h-[275px]"
             />
             <div className="flex">
-              <div className="pt-10 ps-2">
+              <div className="pt-9 ps-2">
                 <select
                   name="party_size"
                   onChange={handleInput}
@@ -149,7 +149,7 @@ const BookingForm = () => {
                   <option value={6}>6 guests</option>
                 </select>
               </div>
-              <div className="pt-10 ps-2">
+              <div className="pt-9 ps-2">
                 <select
                   name="reservation_time"
                   onChange={(e) => {
@@ -177,14 +177,11 @@ const BookingForm = () => {
                 )}
               </div>
             </div>
-            <button
-              className="hover:cursor-pointer bg-black text-white p-2 rounded-md text-center hover:bg-gray-600"
-              disabled={
-                !reservation.reservation_time || !reservation.party_size
-              }
-            >
-              Create Reservation
-            </button>
+            <div className="p-2 border rounded-md text-center hover:bg-gray-300">
+              <Link to={`/restaurants/${id}/reservations`} className="">
+                Find More Avaliable
+              </Link>
+            </div>
           </div>
         </form>
       </div>
@@ -192,4 +189,4 @@ const BookingForm = () => {
   );
 };
 
-export default BookingForm;
+export default BookingWidget;
