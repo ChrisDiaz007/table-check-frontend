@@ -21,6 +21,7 @@ import TableNew from "./Components/Content/Tables/TableNew";
 import UserTables from "./Components/User/UserTables";
 import UserBookings from "./Components/User/UserBookings";
 import TablesEdit from "./Components/Content/Tables/TablesEdit";
+import RestaurantHoursNew from "./Components/Content/DateTime/RestaurantHoursNew";
 
 const AppContent = () => {
   const location = useLocation();
@@ -45,6 +46,10 @@ const AppContent = () => {
           <Route path="Restaurants/:id/edit" element={<RestaurantEdit />} />
           <Route path="Restaurants/:id/Tables/new" element={<TableNew />} />
           <Route path="Restaurants/:id/Tables/edit" element={<TablesEdit />} />
+          <Route
+            path="/Restaurants/:id/Hours/new"
+            element={<RestaurantHoursNew />}
+          />
           <Route
             path="Restaurants/:id/reservations"
             element={<BookingForm />}
