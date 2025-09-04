@@ -46,7 +46,7 @@ const AppContent = () => {
             path="Restaurants/:id/reservations"
             element={<BookingForm />}
           />
-          <Route path="Restaurants/:id/tables" element={<TableNew />} />
+          <Route path="Restaurants/:id/Tables/new" element={<TableNew />} />
           {/* <Route path="/" element={<Home />} /> */}
         </Route>
       </Routes>

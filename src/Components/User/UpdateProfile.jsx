@@ -41,29 +41,22 @@ const UpdateProfile = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const token = TokenStore.getAccessToken();
 
-    // Use FormData instead of JSON
-    const formData = new FormData();
-    // Only append fields that have values (similar to restaurant edit)
-    Object.keys(user).forEach((key) => {
-      if (user[key] !== null && user[key] !== undefined && user[key] !== "") {
-        formData.append(`user[${key}]`, user[key]);
-      }
-    });
-
     axios
-      .patch(`http://localhost:3000/api/v1/users/${id}`, formData, {
-        withCredentials: true,
-        headers: token
-          ? {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${token}`,
-            }
-          : {},
-      })
-      .then((response) => response, window.location.reload())
+      .patch(
+        `http://localhost:3000/api/v1/users/${id}`,
+        { user },
+        {
+          withCredentials: true,
+          headers: token
+            ? {
+                Authorization: `Bearer ${token}`,
+              }
+            : {},
+        }
+      )
       .catch((error) => console.log("Error submitting form", error));
   };
 

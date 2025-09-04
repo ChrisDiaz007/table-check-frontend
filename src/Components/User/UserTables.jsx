@@ -2,7 +2,7 @@ import axios from "axios";
 import UserSideBar from "./UserSideBar";
 import { useEffect, useState } from "react";
 import TokenStore from "../../Auth/TokenStore";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const UserTables = () => {
   const { id } = useParams();
@@ -36,19 +36,49 @@ const UserTables = () => {
             <UserSideBar />
           </div>
         </section>
-        <section>
-          <div>
-            {restaurants.map((restaurant) => (
-              <div key={restaurant.id}>
-                {restaurant.tables.map((table) => (
-                  <div key={table.id}>
-                    <p>
-                      Table Number: {table.number}, seats: {table.seats}
-                    </p>
+        <section className="flex-1">
+          <div className="flex flex-col gap-5">
+            <div>
+              <p className="font-semibold text-3xl">Table List</p>
+            </div>
+            <div className="flex flex-col flex-wrap">
+              {restaurants.map((restaurant) => (
+                <div key={restaurant.id} className="w-100">
+                  <div className="flex gap-5">
+                    <div>
+                      <img
+                        className="ImageWrapped"
+                        src={restaurant.photo_url}
+                        alt={`${restaurant.name} photo`}
+                        style={{
+                          width: "200px",
+                          height: "125px",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                        }}
+                      />
+                      <p className="font-bold">{restaurant.name}</p>
+                    </div>
+                    <div className="flex flex-col gap-5">
+                      <Link
+                        to={`/restaurants/${restaurant.id}/Tables/new`}
+                        className="bg-green-400 p-2 rounded-md hover:bg-green-500"
+                      >
+                        Create Table
+                      </Link>
+                      <p>Edit Tables</p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            ))}
+                  {restaurant.tables.map((table) => (
+                    <div key={table.id}>
+                      <p>
+                        Table Number: {table.number}, seats: {table.seats}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </div>
