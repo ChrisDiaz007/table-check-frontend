@@ -23,6 +23,7 @@ import UserBookings from "./Components/User/UserBookings";
 import TablesEdit from "./Components/Content/Tables/TablesEdit";
 import RestaurantHoursNew from "./Components/Content/DateTime/RestaurantHoursNew";
 import UserOpenHours from "./Components/User/UserOpenHours";
+import RestaurantHoursEdit from "./Components/Content/DateTime/RestaurantHoursEdit";
 
 const AppContent = () => {
   const location = useLocation();
@@ -51,6 +52,10 @@ const AppContent = () => {
           <Route
             path="/restaurants/:id/hours/new"
             element={<RestaurantHoursNew />}
+          />
+          <Route
+            path="/Restaurants/:id/Hours/edit"
+            element={<RestaurantHoursEdit />}
           />
           <Route
             path="Restaurants/:id/reservations"
