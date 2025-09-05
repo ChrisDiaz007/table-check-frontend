@@ -1,14 +1,11 @@
 import "./UserProfile.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import TokenStore from "../../Auth/TokenStore";
 
 const UpdateProfile = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
-
-  // const [user, setUser] = useState(null);
   const [user, setUser] = useState({
     first_name: "",
     last_name: "",
@@ -20,8 +17,10 @@ const UpdateProfile = () => {
     const token = TokenStore.getAccessToken();
     axios
       .get(`http://localhost:3000/api/v1/users/${id}`, {
-        "Content-Type": "application/json",
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         const item = res.data.data;
@@ -30,7 +29,7 @@ const UpdateProfile = () => {
       .catch((err) => {
         console.error("Error fetching user", err);
       });
-  }, [id, navigate]);
+  }, [id]);
   if (!user) return <div>Loading...</div>;
   console.log(user);
 
@@ -47,11 +46,18 @@ const UpdateProfile = () => {
     axios
       .patch(
         `http://localhost:3000/api/v1/users/${id}`,
-        { user },
+        {
+          user: {
+            first_name: user.first_name,
+            last_name: user.last_name,
+            phone_number: user.phone_number,
+          },
+        },
         {
           withCredentials: true,
           headers: token
             ? {
+                "Content-type": "application/json",
                 Authorization: `Bearer ${token}`,
               }
             : {},

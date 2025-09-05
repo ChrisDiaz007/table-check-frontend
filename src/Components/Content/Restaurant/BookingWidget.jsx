@@ -22,7 +22,7 @@ const BookingWidget = () => {
       })
       .then((res) => {
         const hours = res.data.data.map((item) => ({
-          id: Number(id),
+          id: Number(item.id),
           ...item.attributes,
         }));
         setHours(hours);

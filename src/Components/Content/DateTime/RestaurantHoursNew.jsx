@@ -52,7 +52,7 @@ const RestaurantHoursNew = () => {
       <div className="pt-50">
         <form onSubmit={handleSubmit} className="p-15 flex flex-col items-center border rounded-md gap-5">
           <div>
-            <p className="font-semibold text-3xl">Select Open Hours</p>
+            <p className="font-semibold text-3xl">Create Date/Hours</p>
           </div>
           <div className="flex items-center justify-center gap-5">
             <div>

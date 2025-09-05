@@ -14,7 +14,7 @@ const UserOpenHours = () => {
       })
       .then((res) => {
         const flatRestaurants = res.data.data.map((item) => ({
-          id: Number(id),
+          id: item.id,
           ...item.attributes,
         }));
         setRestaurants(flatRestaurants);
@@ -67,7 +67,12 @@ const UserOpenHours = () => {
                           >
                             Create Date/Hours
                           </Link>
-                          <Link>Edit Date/Hours</Link>
+                          <Link
+                            to={`/restaurants/${restaurant.id}/hours/edit`}
+                            className="bg-yellow-300 p-2 rounded-md cursor-pointer hover:bg-amber-500 text-center"
+                          >
+                            Edit Date/Hours
+                          </Link>
                         </div>
                       </div>
                       <div>
