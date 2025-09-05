@@ -50,7 +50,7 @@ const UserRestaurant = () => {
           <div>
             <div className="swiper-wrapper">
               {restaurants.length === 0 ? (
-                <p>No Restaurants Found</p>
+                <p>No Restaurants Created</p>
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {restaurants.map((restaurant) => (

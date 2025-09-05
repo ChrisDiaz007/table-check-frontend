@@ -22,6 +22,7 @@ import UserTables from "./Components/User/UserTables";
 import UserBookings from "./Components/User/UserBookings";
 import TablesEdit from "./Components/Content/Tables/TablesEdit";
 import RestaurantHoursNew from "./Components/Content/DateTime/RestaurantHoursNew";
+import UserOpenHours from "./Components/User/UserOpenHours";
 
 const AppContent = () => {
   const location = useLocation();
@@ -43,6 +44,7 @@ const AppContent = () => {
           <Route path="/Users/:id/Bookings" element={<UserBookings />} />
           <Route path="/Users/:id/Restaurants" element={<UserRestaurant />} />
           <Route path="/Users/:id/Tables" element={<UserTables />} />
+          <Route path="/Users/:id/Hours" element={<UserOpenHours />} />
           <Route path="Restaurants/:id/edit" element={<RestaurantEdit />} />
           <Route path="Restaurants/:id/Tables/new" element={<TableNew />} />
           <Route path="Restaurants/:id/Tables/edit" element={<TablesEdit />} />

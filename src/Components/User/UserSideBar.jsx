@@ -8,6 +8,7 @@ import {
   faBook,
   faChair,
   faCircleUser,
+  faClock,
   faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -55,6 +56,9 @@ const UserSideBar = () => {
         </Link>
         <Link to={`/users/${id}/tables`} className="User-SideBar-Links">
           <FontAwesomeIcon icon={faChair} className="fa-xl" /> Manage Tables
+        </Link>
+        <Link to={`/users/${id}/hours`} className="User-SideBar-Links">
+          <FontAwesomeIcon icon={faClock} className="fa-xl" /> Manage Hours
         </Link>
       </div>
     </section>

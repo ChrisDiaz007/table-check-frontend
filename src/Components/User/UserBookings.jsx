@@ -39,49 +39,55 @@ const UserBookings = () => {
           <div>
             <p className="font-semibold text-3xl">Bookings</p>
           </div>
-          <div className="flex flex-wrap gap-5">
-            {user.reservations.map((reservation) => (
-              <div key={reservation.id} className="w-80">
-                {reservation.restaurant_photo ? (
-                  <Link to={`/restaurants/${reservation.restaurant_id}`}>
-                    <img
-                      className="ImageWrapped"
-                      src={reservation.restaurant_photo}
-                      alt={`${reservation.restaurant_name} photo`}
-                      style={{
-                        width: "100%",
-                        height: "175px",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                      }}
-                    />
-                  </Link>
-                ) : (
-                  <div>No Image</div>
-                )}
-                <p>Restaurant: {reservation.restaurant_name}</p>
-                <p>Date: {reservation.reservation_date}</p>
-                <p>Time: {reservation.reservation_time}</p>
-                <div className="flex gap-2">
-                  <p>Status:</p>
-                  <p
-                    className={
-                      reservation.status === "pending"
-                        ? "text-yellow-500 font-semibold"
-                        : reservation.status === "accepted"
-                        ? "text-green-600 font-semibold"
-                        : reservation.status === "rejected"
-                        ? "text-red-600 font-semibold"
-                        : reservation.status === "cancelled"
-                        ? "text-gray-500 font-semibold"
-                        : ""
-                    }
-                  >
-                    {reservation.status}
-                  </p>
-                </div>
+          <div>
+            {user.reservations.length === 0 ? (
+              "No Reservations"
+            ) : (
+              <div className="flex flex-wrap gap-5">
+                {user.reservations.map((reservation) => (
+                  <div key={reservation.id} className="w-80">
+                    {reservation.restaurant_photo ? (
+                      <Link to={`/restaurants/${reservation.restaurant_id}`}>
+                        <img
+                          className="ImageWrapped"
+                          src={reservation.restaurant_photo}
+                          alt={`${reservation.restaurant_name} photo`}
+                          style={{
+                            width: "100%",
+                            height: "175px",
+                            objectFit: "cover",
+                            borderRadius: "8px",
+                          }}
+                        />
+                      </Link>
+                    ) : (
+                      <div>No Image</div>
+                    )}
+                    <p>Restaurant: {reservation.restaurant_name}</p>
+                    <p>Date: {reservation.reservation_date}</p>
+                    <p>Time: {reservation.reservation_time}</p>
+                    <div className="flex gap-2">
+                      <p>Status:</p>
+                      <p
+                        className={
+                          reservation.status === "pending"
+                            ? "text-yellow-500 font-semibold"
+                            : reservation.status === "accepted"
+                            ? "text-green-600 font-semibold"
+                            : reservation.status === "rejected"
+                            ? "text-red-600 font-semibold"
+                            : reservation.status === "cancelled"
+                            ? "text-gray-500 font-semibold"
+                            : ""
+                        }
+                      >
+                        {reservation.status}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
         </section>
       </div>

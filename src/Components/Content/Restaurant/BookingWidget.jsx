@@ -21,11 +21,9 @@ const BookingWidget = () => {
         "Content-Type": "application/json",
       })
       .then((res) => {
-        const hours = res.data.map((item) => ({
-          id: item.id,
-          day_of_week: item.day_of_week,
-          opens_at: item.opens_at,
-          closes_at: item.closes_at,
+        const hours = res.data.data.map((item) => ({
+          id: Number(id),
+          ...item.attributes,
         }));
         setHours(hours);
         console.log("Hours successfully fetched", hours);
