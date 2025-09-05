@@ -41,6 +41,8 @@ const RestaurantHoursNew = () => {
       })
       .catch((error) => {
         console.error("Error Submitting Hours", error);
+        const msg = "Day Already Created";
+        alert(msg);
       });
   };
 
