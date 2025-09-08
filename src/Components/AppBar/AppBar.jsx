@@ -1,5 +1,5 @@
 import "./AppBar.css";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/NavBar.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";

@@ -3,15 +3,21 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import UserSideBar from "./UserSideBar";
+import TokenStore from "@/Auth/TokenStore";
 
 const UserRestaurant = () => {
-  const [restaurants, setRestaurants] = useState([]);
   const { id } = useParams();
+  const token = TokenStore.getAccessToken();
+  const [restaurants, setRestaurants] = useState([]);
+  console.log(restaurants);
 
   useEffect(() => {
     axios
       .get(`http://localhost:3000/api/v1/users/${id}/restaurants`, {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((response) => {
         const flatRestaurants = response.data.data.map((item) => ({

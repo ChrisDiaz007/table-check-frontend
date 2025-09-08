@@ -6,6 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBook,
+  faBookOpen,
   faChair,
   faCircleUser,
   faClock,
@@ -59,6 +60,9 @@ const UserSideBar = () => {
         </Link>
         <Link to={`/users/${id}/hours`} className="User-SideBar-Links">
           <FontAwesomeIcon icon={faClock} className="fa-xl" /> Manage Hours
+        </Link>
+        <Link to={`/users/${id}/reservations`} className="User-SideBar-Links">
+          <FontAwesomeIcon icon={faBookOpen} className="fa-xl" /> Reservations
         </Link>
       </div>
     </section>

@@ -176,7 +176,7 @@ const BookingWidget = () => {
               </div>
             </div>
             <div className="p-2 border rounded-md text-center hover:bg-gray-300">
-              <Link to={`/restaurants/${id}/reservations`} className="">
+              <Link to={`/restaurants/${id}/reservations/new`} className="">
                 Find More Avaliable
               </Link>
             </div>

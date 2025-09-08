@@ -6,7 +6,8 @@ import { Link, useParams } from "react-router-dom";
 
 const UserBookings = () => {
   const { id } = useParams();
-  const [user, setUser] = useState({ reservations: [] });
+  const [user, setUser] = useState();
+  console.log(user);
 
   // Load User
   useEffect(() => {
@@ -25,7 +26,6 @@ const UserBookings = () => {
       });
   }, [id]);
   if (!user) return <div>Loading...</div>;
-  console.log(user);
 
   return (
     <section className="User-Bookings">
@@ -40,18 +40,18 @@ const UserBookings = () => {
             <p className="font-semibold text-3xl">Bookings</p>
           </div>
           <div>
-            {user.reservations.length === 0 ? (
-              "No Reservations"
+            {user.bookings.length === 0 ? (
+              "No Bookings"
             ) : (
               <div className="flex flex-wrap gap-5">
-                {user.reservations.map((reservation) => (
-                  <div key={reservation.id} className="w-80">
-                    {reservation.restaurant_photo ? (
-                      <Link to={`/restaurants/${reservation.restaurant_id}`}>
+                {user.bookings.map((booking) => (
+                  <div key={booking.id} className="w-80">
+                    {booking.restaurant_photo ? (
+                      <Link to={`/restaurants/${booking.restaurant_id}`}>
                         <img
                           className="ImageWrapped"
-                          src={reservation.restaurant_photo}
-                          alt={`${reservation.restaurant_name} photo`}
+                          src={booking.restaurant_photo}
+                          alt={`${booking.restaurant_name} photo`}
                           style={{
                             width: "100%",
                             height: "175px",
@@ -63,25 +63,25 @@ const UserBookings = () => {
                     ) : (
                       <div>No Image</div>
                     )}
-                    <p>Restaurant: {reservation.restaurant_name}</p>
-                    <p>Date: {reservation.reservation_date}</p>
-                    <p>Time: {reservation.reservation_time}</p>
+                    <p>Restaurant: {booking.restaurant_name}</p>
+                    <p>Date: {booking.reservation_date}</p>
+                    <p>Time: {booking.reservation_time}</p>
                     <div className="flex gap-2">
                       <p>Status:</p>
                       <p
                         className={
-                          reservation.status === "pending"
+                          booking.status === "pending"
                             ? "text-yellow-500 font-semibold"
-                            : reservation.status === "accepted"
+                            : booking.status === "accepted"
                             ? "text-green-600 font-semibold"
-                            : reservation.status === "rejected"
+                            : booking.status === "rejected"
                             ? "text-red-600 font-semibold"
-                            : reservation.status === "cancelled"
+                            : booking.status === "cancelled"
                             ? "text-gray-500 font-semibold"
                             : ""
                         }
                       >
-                        {reservation.status}
+                        {booking.status}
                       </p>
                     </div>
                   </div>
