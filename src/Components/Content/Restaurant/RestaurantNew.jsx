@@ -17,7 +17,6 @@ const RestaurantNew = () => {
     description: "",
     phone_number: "",
     website: "",
-    // total_tables: "",
     about: "",
     lunch_price: "",
     dinner_price: "",
@@ -82,7 +81,6 @@ const RestaurantNew = () => {
           Website : <input type="text" onChange={handleInput} name="website" className="border rounded-md p-2"/>
           Lunch Price : <input type="text" onChange={handleInput} name="lunch_price" className="border rounded-md p-2"/>
           Dinner Price : <input type="text" onChange={handleInput} name="dinner_price" className="border rounded-md p-2"/>
-          {/* Cuisine: <input type="text" onChange={handleInput} name="cuisine_ids" className="border rounded-md p-2"/> */}
           Photo : <input type="file" onChange={handleFileInput} name="photo" accept="image/*" required className="border rounded w-55 p-2"/>
           
           <span className="flex justify-center pt-5">
