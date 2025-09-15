@@ -45,7 +45,7 @@ const UserTables = () => {
               {restaurants.length === 0 ? (
                 "No Restaurants Created"
               ) : (
-                <div className="flex flex-col flex-wrap">
+                <div className="flex flex-col flex-wrap gap-6">
                   {restaurants.map((restaurant) => (
                     <div key={restaurant.id} className="w-100">
                       <div className="flex gap-5">

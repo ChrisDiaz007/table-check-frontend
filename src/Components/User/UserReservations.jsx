@@ -43,30 +43,46 @@ const UserReservations = () => {
           </div>
         </section>
         <section>
-          <div>
-            {restaurants.length === 0 ? (
-              <p>No Restaurants Avaliable</p>
-            ) : (
-              <div className="flex flex-wrap gap-2">
-                {restaurants.map((restaurant) => (
-                  <div className="swiper-slider" key={restaurant.id}>
-                    <Link to={`/restaurants/${restaurant.id}/reservations`}>
-                      <div className="ImageWrapper">
-                        {restaurant.photo_url ? (
+          <div className="flex flex-col gap-5">
+            <div>
+              <p className="font-semibold text-3xl">Reservations</p>
+            </div>
+            <div>
+              {restaurants.length === 0 ? (
+                "No Restaurants Avaliable"
+              ) : (
+                <section className="Reservations flex flex-col gap-6">
+                  {restaurants.map((restaurant) => (
+                    <div key={restaurant.id}>
+                      <div className="flex gap-5">
+                        <div>
                           <img
                             className="ImageWrapped"
                             src={restaurant.photo_url}
                             alt={`${restaurant.name} photo`}
                             style={{
-                              width: "100%",
-                              height: "175px",
+                              width: "200px",
+                              height: "125px",
                               objectFit: "cover",
                               borderRadius: "8px",
                             }}
                           />
-                        ) : (
-                          <div>No Image</div>
-                        )}
+                          <p className="font-bold">{restaurant.name}</p>
+                        </div>
+                        <div className="flex flex-col gap-5">
+                          {restaurant.reservations.length === 0 ? (
+                            ""
+                          ) : (
+                            <>
+                              <Link
+                                to={`/restaurants/${restaurant.id}/reservations`}
+                                className="bg-green-400 p-2 rounded-md cursor-pointer hover:bg-green-500 text-center"
+                              >
+                                View Reservations
+                              </Link>
+                            </>
+                          )}
+                        </div>
                       </div>
 
                       <div className="CardInfo">
@@ -78,14 +94,32 @@ const UserReservations = () => {
                               Total Reservations:{" "}
                               {restaurant.reservations.length}
                             </p>
+                            <p>
+                              Pending Reservations:{" "}
+                              {
+                                restaurant.reservations.filter(
+                                  (reservations) =>
+                                    reservations.status === "pending"
+                                ).length
+                              }
+                            </p>
+                            <p>
+                              Accepted Reservations:{" "}
+                              {
+                                restaurant.reservations.filter(
+                                  (reservations) =>
+                                    reservations.status === "accepted"
+                                ).length
+                              }
+                            </p>
                           </>
                         )}
                       </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            )}
+                    </div>
+                  ))}
+                </section>
+              )}
+            </div>
           </div>
         </section>
       </div>

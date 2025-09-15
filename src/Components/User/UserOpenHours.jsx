@@ -42,7 +42,7 @@ const UserOpenHours = () => {
               {restaurants.length === 0 ? (
                 "No Restaurants Created"
               ) : (
-                <section className="Restaurants">
+                <section className="Restaurants flex flex-col gap-6">
                   {restaurants.map((restaurant) => (
                     <div key={restaurant.id}>
                       <div className="flex gap-5">
