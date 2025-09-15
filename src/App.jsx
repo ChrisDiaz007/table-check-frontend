@@ -26,6 +26,7 @@ import UserOpenHours from "./Components/User/UserOpenHours";
 import RestaurantHoursEdit from "./Components/Content/DateTime/RestaurantHoursEdit";
 import UserReservations from "./Components/User/UserReservations";
 import Reservations from "./Components/Content/Reservations/Reservations";
+import CuisineEdit from "./Components/Content/Cuisine/CuisineEdit";
 
 const AppContent = () => {
   const location = useLocation();
@@ -57,6 +58,7 @@ const AppContent = () => {
           <Route path="/Restaurants/:id/Hours/edit" element={<RestaurantHoursEdit />} />
           <Route path="/Restaurants/:id/Reservations" element={<Reservations />} />
           <Route path="/Restaurants/:id/Reservations/new" element={<BookingForm />} />
+          <Route path="/Restaurants/:id/Cuisines/edit" element={<CuisineEdit />} />
           {/* <Route path="/" element={<Home />} /> */}
         </Route>
       </Routes>
