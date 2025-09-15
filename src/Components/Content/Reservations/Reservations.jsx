@@ -92,19 +92,26 @@ const Reservations = () => {
     // prettier-ignore
     <section className="Reservations">
       <div className="flex gap-5">
-        <div className="flex-1">
-          <div className="flex flex-col gap-3 ">
-            <p className="font-semibold text-2xl">Pending Reservations</p>
+        <div className="flex flex-col gap-3 flex-1">
+          <p className="font-semibold text-2xl">Pending Reservations</p>
           {reservations
             .filter(reservation => reservation.status === "pending")
             .map((reservation) => (
-              <div key={reservation.id} className="border p-4 mb-3 rounded">
-                <p><strong>Name:</strong> {reservation.user.first_name} {reservation.user.last_name}</p>
-                <p><strong>Email:</strong> {reservation.user.email}</p>
-                <p><strong>Phone Number:</strong> {reservation.user.phone_number}</p>
-                <p><strong>Date:</strong> {reservation.reservation_date}</p>
-                <p><strong>Time:</strong> {reservation.reservation_time}</p>
-                <div className="flex gap-2 mt-2">
+              <div key={reservation.id} className="border p-4 rounded flex flex-col gap-2">
+                <div className="flex flex-col">
+                  <div className="flex gap-5">
+                    <p><strong>Name:</strong> {reservation.user.first_name} {reservation.user.last_name}</p>
+                    <p><strong>Email:</strong> {reservation.user.email}</p>
+                  </div>
+                  <div>
+                    <p><strong>Phone Number:</strong> {reservation.user.phone_number}</p>
+                  </div>
+                  <div className="flex gap-5">
+                    <p><strong>Date:</strong> {reservation.reservation_date}</p>
+                    <p><strong>Time:</strong> {reservation.reservation_time}</p>
+                  </div>
+                </div>
+                <div className="flex gap-5">
                   <button
                     className="bg-green-400 px-3 py-1 rounded hover:bg-green-500 cursor-pointer"
                     onClick={() => handleAccept(
@@ -128,9 +135,8 @@ const Reservations = () => {
                 </div>
               </div>
             ))}
-          </div>
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 flex-1">
           <p className="font-semibold text-2xl">Accepted</p>
           {reservations
           .filter(reservation => reservation.status === "accepted")
