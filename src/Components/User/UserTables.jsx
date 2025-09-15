@@ -80,7 +80,7 @@ const UserTables = () => {
                       </div>
                       <div>
                         {restaurant.tables.length === 0 ? (
-                          "No tables Created"
+                          "No tables Registered"
                         ) : (
                           <div>
                             {restaurant.tables.map((table) => (

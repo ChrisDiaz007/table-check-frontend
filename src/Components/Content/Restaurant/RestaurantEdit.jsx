@@ -93,7 +93,6 @@ const RestaurantEdit = () => {
                         />
           Phone Number : <input type="text" onChange={handleInput} name="phone_number" value={restaurant.phone_number} className="border rounded-md p-2"/>
           Website : <input type="text" onChange={handleInput} name="website" value={restaurant.website} className="border rounded-md p-2"/>
-          Total Tables : <input type="text" onChange={handleInput} name="total_tables" value={restaurant.total_tables} className="border rounded-md p-2"/>
           Lunch Price : <input type="text" onChange={handleInput} name="lunch_price" value={restaurant.lunch_price} className="border rounded-md p-2"/>
           Dinner Price : <input type="text" onChange={handleInput} name="dinner_price" value={restaurant.dinner_price} className="border rounded-md p-2"/>
           Photo : <input type="file" onChange={handleFileInput} name="photo" className="border rounded w-55 p-2"/>
