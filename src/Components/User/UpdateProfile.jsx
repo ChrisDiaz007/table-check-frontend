@@ -70,7 +70,7 @@ const UpdateProfile = () => {
     // prettier-ignore
     <section className="User-Update-Profile">
       <div>
-        <p className="font-[600] text-3xl pb-5">Profile</p>
+        <p className="font-[600] text-3xl pb-5">Account</p>
       </div>
       <div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">

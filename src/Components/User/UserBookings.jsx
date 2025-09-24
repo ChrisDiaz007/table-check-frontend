@@ -41,7 +41,7 @@ const UserBookings = () => {
           </div>
           <div>
             {user.bookings.length === 0 ? (
-              "No Bookings"
+              <p>Upcoming {user.bookings.length}</p>
             ) : (
               <div className="flex flex-wrap gap-5">
                 {user.bookings.map((booking) => (

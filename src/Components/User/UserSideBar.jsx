@@ -47,7 +47,7 @@ const UserSideBar = () => {
       </div>
       <div className="flex flex-col gap-1">
         <Link to={`/users/${id}`} className="User-SideBar-Links">
-          <FontAwesomeIcon icon={faCircleUser} className="fa-xl" /> Profile
+          <FontAwesomeIcon icon={faCircleUser} className="fa-xl" /> Account
         </Link>
         <Link to={`/users/${id}/bookings`} className="User-SideBar-Links">
           <FontAwesomeIcon icon={faBook} className="fa-xl" /> Bookings

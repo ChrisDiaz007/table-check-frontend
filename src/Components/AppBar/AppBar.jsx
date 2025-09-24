@@ -39,7 +39,7 @@ const AppBar = () => {
                 className="cursor-pointer hover:bg-gray-300 p-2 rounded-md"
                 onClick={() => navigate(`/users/${User.id}`)}
               >
-                <p>Profile</p>
+                <p>Account</p>
               </button>
               <button
                 className="cursor-pointer bg-black text-white p-2 rounded-md"
