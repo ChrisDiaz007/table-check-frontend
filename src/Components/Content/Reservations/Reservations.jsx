@@ -142,13 +142,19 @@ const Reservations = () => {
           .filter(reservation => reservation.status === "accepted")
           .map((reservation) => (
             <div key={reservation.id} className="border p-4 mb-3 rounded">
-              <div>
-                <p><strong>Name:</strong> {reservation.user.first_name} {reservation.user.last_name}</p>
-                <p><strong>Name:</strong> {reservation.user.first_name} {reservation.user.last_name}</p>
-                <p><strong>Email:</strong> {reservation.user.email}</p>
-                <p><strong>Phone Number:</strong> {reservation.user.phone_number}</p>
-                <p><strong>Date:</strong> {reservation.reservation_date}</p>
-                <p><strong>Time:</strong> {reservation.reservation_time}</p>
+                <div className="flex flex-col">
+                  <div className="flex gap-5">
+                    <p><strong>Name:</strong> {reservation.user.first_name} {reservation.user.last_name}</p>
+                    <p><strong>Email:</strong> {reservation.user.email}</p>
+                  </div>
+                  <div>
+                    <p><strong>Phone Number:</strong> {reservation.user.phone_number}</p>
+                  </div>
+                  <div className="flex gap-5">
+                    <p><strong>Date:</strong> {reservation.reservation_date}</p>
+                    <p><strong>Time:</strong> {reservation.reservation_time}</p>
+                  </div>
+                </div>
                 <div>
                   <button
                   className="bg-yellow-400 px-3 py-1 rounded hover:bg-yellow-500 cursor-pointer"
@@ -162,7 +168,6 @@ const Reservations = () => {
                   </button>
                 </div>
               </div>
-            </div>
           ))}
         </div>
         

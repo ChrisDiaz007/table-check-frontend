@@ -33,10 +33,6 @@ const UserReservations = () => {
       });
   }, [id]);
 
-  useEffect(() => {
-    axios.get(``);
-  });
-
   return (
     <section className="User-Reservations">
       <div className="Wrapper flex flex-wrap">
@@ -57,7 +53,7 @@ const UserReservations = () => {
                 {restaurants.map((restaurant) => (
                   <div
                     key={restaurant.id}
-                    className="border border-purple-400 bg-purple-200 w-75 rounded-md flex flex-col gap-4"
+                    className="bg-purple-200 w-75 rounded-md flex flex-col gap-4"
                   >
                     <div>
                       <p className="font-bold ps-6 pt-5 text-purple-900">
