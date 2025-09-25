@@ -17,8 +17,15 @@ const Location = () => {
       })
       .then((response) => {
         const flatRestaurants = response.data.data.map((item) => ({
-          id: Number(item.id),
-          ...item.attributes,
+          // ...item.attributes,
+          id: Number(item.attributes.id),
+          name: item.attributes.name,
+          photo: item.attributes.photo,
+          about: item.attributes.about,
+          lunch_price: item.attributes.lunch_price,
+          dinner_price: item.attributes.dinner_price,
+          prefecture: item.attributes.prefecture,
+          cuisines: item.attributes.cuisines,
         }));
 
         // Filter only Tokyo prefecture
@@ -27,6 +34,7 @@ const Location = () => {
         );
 
         setRestaurants(tokyoRestaurants);
+        console.log("Restaurants Fetch Successfully", tokyoRestaurants);
       })
       .catch((error) => console.error("Error fetching restaurants", error));
   }, []);
@@ -50,10 +58,10 @@ const Location = () => {
           <SwiperSlide className="swiper-slide" key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`}>
               <div className="ImageWrapper">
-                {restaurant.photo_url ? (
+                {restaurant.photo ? (
                   <img
                     className="ImageWrapped"
-                    src={restaurant.photo_url}
+                    src={restaurant.photo}
                     alt={`${restaurant.name} photo`}
                     style={{
                       width: "100%",
@@ -72,11 +80,15 @@ const Location = () => {
                   <h3>{restaurant.name}</h3>
                 </div>
                 <div className="Cuisine_p">
-                  <span className="Cuisine_box">
+                  <span className="flex flex-wrap gap-2">
                     {restaurant.cuisines && restaurant.cuisines.length > 0 ? (
-                      restaurant.cuisines
+                      restaurant.cuisines.map((cuisine) => (
+                        <div key={cuisine.id}>
+                          <span className="Cuisine_box">{cuisine}</span>
+                        </div>
+                      ))
                     ) : (
-                      <span>none</span>
+                      <span className="Cuisine_box">none</span>
                     )}
                   </span>
                 </div>

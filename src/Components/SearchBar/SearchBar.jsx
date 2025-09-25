@@ -22,7 +22,7 @@ const Searchbar = () => {
       .catch((err) => console.error("Error fethcing Restaurants", err));
   }, []);
 
-  console.log(restaurants);
+  // console.log(restaurants);
 
   return (
     <div

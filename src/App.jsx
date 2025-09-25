@@ -28,6 +28,8 @@ import UserReservations from "./Components/User/UserReservations";
 import Reservations from "./Components/Content/Reservations/Reservations";
 import CuisineEdit from "./Components/Content/Cuisine/CuisineEdit";
 import UserCuisines from "./Components/User/UserCuisines";
+import Areas from "./Components/Content/Areas/Areas";
+import Cuisines from "./Components/Content/Cuisine/Cuisines";
 
 const AppContent = () => {
   const location = useLocation();
@@ -39,7 +41,13 @@ const AppContent = () => {
       <Routes>
         {/* Public route */}
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Location />} />
+        <Route path="/" element={
+          <>
+          <Location />
+          <Cuisines />
+          <Areas />
+          </>
+        } />
         <Route path="/Restaurants/:id" element={<Restaurant />} />
         <Route path="Signup" element={<Signup />} />
 
