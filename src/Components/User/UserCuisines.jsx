@@ -80,7 +80,7 @@ const UserCuisines = () => {
                           <div>No Image</div>
                         )}
                       </div>
-                      <div className="ps-5 pb-5 pt-3">
+                      <div className="ps-5 pb-5 pt-5">
                         <Link
                           to={`/restaurants/${restaurant.id}/cuisines/edit`}
                           className="bg-green-400 p-3 rounded-md cursor-pointer hover:bg-green-500 text-center text-purple-600 font-bold"
@@ -88,7 +88,7 @@ const UserCuisines = () => {
                           Configure Cuisines
                         </Link>
                       </div>
-                      <div className="flex flex-wrap gap-5 ps-5 pb-6">
+                      <div className="flex flex-wrap gap-5 ps-5 pb-6 pt-6 border border-t-purple-500">
                         {restaurant.cuisines.map((cuisine) => (
                           <div
                             key={cuisine}
