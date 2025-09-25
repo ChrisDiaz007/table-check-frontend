@@ -51,7 +51,7 @@ const UserCuisines = () => {
               {restaurants.length === 0 ? (
                 <p>Restaurants Avaliable {restaurants.length}</p>
               ) : (
-                <section className="flex-wrap flex gap-5">
+                <section className="flex-wrap flex gap-10">
                   {restaurants.map((restaurant) => (
                     <div
                       key={restaurant.id}
@@ -62,7 +62,6 @@ const UserCuisines = () => {
                           {restaurant.name}
                         </p>
                       </div>
-
                       <div className="ImageWrapper flex justify-center">
                         {restaurant.photo ? (
                           <img
